@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_configure:
+	# FIXME: Headers are arch-independent, but to avoid creating yet
+	# another package, they are included in the triplet directory so
+	# that they can be shipped alongside the rest
+	dh_auto_configure -- \
+	    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	    -DCMAKE_INSTALL_INCLUDEDIR=include/$(DEB_HOST_MULTIARCH) \
+	    -DECM_MKSPECS_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)/qt5/mkspecs/modules \
+	    -DQML_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)/qt5/qml \
+	    -DQT_PLUGIN_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)/qt5/plugins
+
+override_dh_auto_test:
+	# FIXME

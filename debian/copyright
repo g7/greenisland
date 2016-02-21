@@ -1,0 +1,362 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: greenisland
+Source: https://github.com/greenisland/greenisland
+
+Files: *
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: GPL-2+
+
+Files: cmake/*
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: BSD-3-clause
+
+Files: declarative/fpscounter.cpp
+  declarative/plugin.cpp
+  declarative/quickkeybindings.cpp
+Copyright: 2012-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: LGPL-2.1+
+
+Files: plugins/*
+Copyright: 2014, 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: GPL-2+
+
+Files: plugins/egldeviceintegration/*
+Copyright: 2016, The Qt Company Ltd
+License: LGPL-2.1, or LGPL-3
+
+Files: plugins/egldeviceintegration/brcm/main.cpp
+Copyright: 2012-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: LGPL-2.1+
+
+Files: plugins/egldeviceintegration/kms/*
+Copyright: 2016, The Qt Company Ltd
+  2015, 2016, Pier Luigi Fiorini
+License: UNKNOWN
+ Please fill license UNKNOWN from header of plugins/egldeviceintegration/kms/*
+
+Files: plugins/egldeviceintegration/kms/eglfskmscursor.h
+Copyright: 2016, The Qt Company Ltd
+License: UNKNOWN
+ Please fill license UNKNOWN from header of plugins/egldeviceintegration/kms/eglfskmscursor.h
+
+Files: plugins/egldeviceintegration/kms/main.cpp
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: LGPL-2.1+
+
+Files: plugins/egldeviceintegration/mali/main.cpp
+Copyright: 2012-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: LGPL-2.1+
+
+Files: plugins/egldeviceintegration/viv/main.cpp
+Copyright: 2012-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: LGPL-2.1+
+
+Files: plugins/egldeviceintegration/wayland/*
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: LGPL-2.1+
+
+Files: plugins/egldeviceintegration/wayland/stateguard.h
+Copyright: 2016, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: plugins/egldeviceintegration/x11/main.cpp
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: LGPL-2.1+
+
+Files: plugins/extensions/plasma/plugin.cpp
+Copyright: 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: LGPL-2.1+
+
+Files: plugins/extensions/xwayland/*
+Copyright: 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: LGPL-2.1+
+
+Files: plugins/extensions/xwayland/sigwatch.cpp
+  plugins/extensions/xwayland/sigwatch.h
+Copyright: 2014, Simon Knopp
+License: Expat
+
+Files: plugins/extensions/xwayland/xcbresources.cpp
+  plugins/extensions/xwayland/xcbresources.h
+Copyright: 2014, 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: GPL-2+
+
+Files: plugins/extensions/xwayland/xcbwindow.cpp
+  plugins/extensions/xwayland/xcbwindow.h
+Copyright: 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+  2012, 2013, Martin Gräßlin <mgraesslin@kde.org>
+License: GPL-2+
+
+Files: src/hardwareintegration/*
+Copyright: 2015, The Qt Company Ltd
+License: GPL-3
+
+Files: src/hardwareintegration/brcm-egl/main.cpp
+Copyright: 2015, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: src/hardwareintegration/drm-egl-server/main.cpp
+Copyright: 2015, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: src/hardwareintegration/libhybris-egl-server/*
+Copyright: 2014, Jolla Ltd, author: <giulio.camuffo@jollamobile.com>
+License: GPL-3
+
+Files: src/hardwareintegration/libhybris-egl-server/main.cpp
+Copyright: 2014, Jolla Ltd, author: <giulio.camuffo@jollamobile.com>
+License: LGPL-2.1 or LGPL-3
+
+Files: src/hardwareintegration/wayland-egl/main.cpp
+Copyright: 2015, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: src/hardwareintegration/xcomposite-egl/main.cpp
+Copyright: 2015, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: src/hardwareintegration/xcomposite-glx/main.cpp
+Copyright: 2015, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: src/platform/deviceintegration/*
+Copyright: 2016, The Qt Company Ltd
+  2015, 2016, Pier Luigi Fiorini
+License: LGPL-2.1, or LGPL-3
+
+Files: src/platform/deviceintegration/deviceintegration_p.cpp
+  src/platform/deviceintegration/deviceintegration_p.h
+  src/platform/deviceintegration/eglfsxkb.cpp
+  src/platform/deviceintegration/eglfsxkb.h
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: LGPL-2.1+
+
+Files: src/platform/deviceintegration/eglfscontext.h
+  src/platform/deviceintegration/eglfscursor.h
+  src/platform/deviceintegration/eglfsintegration.h
+  src/platform/deviceintegration/eglfsoffscreenwindow.h
+  src/platform/deviceintegration/eglfswindow.h
+Copyright: 2016, The Qt Company Ltd
+License: UNKNOWN
+ Please fill license UNKNOWN from header of src/platform/deviceintegration/eglfscontext.h src/platform/deviceintegration/eglfscursor.h src/platform/deviceintegration/eglfsintegration.h src/platform/deviceintegration/eglfsoffscreenwindow.h src/platform/deviceintegration/eglfswindow.h
+
+Files: src/platform/eglconvenience/*
+Copyright: 2016, The Qt Company Ltd
+License: LGPL-2.1, or LGPL-3
+
+Files: src/platform/libinput/libinputkeyboard.cpp
+  src/platform/libinput/libinputpointer.cpp
+  src/platform/libinput/libinputtouch.cpp
+Copyright: 2015, The Qt Company Ltd
+  2015, 2016, Pier Luigi Fiorini
+License: LGPL-2.1, or LGPL-3
+
+Files: src/platform/platformcompositor/*
+Copyright: 2016, The Qt Company Ltd
+License: LGPL-2.1, or LGPL-3
+
+Files: src/server/core/diagnostic_p.cpp
+Copyright: 2015, The Qt Company Ltd
+  2012-2016, Pier Luigi Fiorini
+License: LGPL-2.1+
+
+Files: src/server/core/diagnostic_p.h
+Copyright: 2015, 2016, Pier Luigi Fiorini
+License: LGPL-2.1+
+
+Files: src/waylandcompositor/*
+Copyright: 2015, The Qt Company Ltd
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandbufferref.cpp
+  src/waylandcompositor/compositor_api/qwaylandbufferref.h
+  src/waylandcompositor/compositor_api/qwaylanddestroylistener.cpp
+  src/waylandcompositor/compositor_api/qwaylanddestroylistener_p.h
+  src/waylandcompositor/compositor_api/qwaylandquickcompositor.h
+  src/waylandcompositor/compositor_api/qwaylandquicksurface.cpp
+  src/waylandcompositor/compositor_api/qwaylandquicksurface.h
+  src/waylandcompositor/compositor_api/qwaylandview.cpp
+  src/waylandcompositor/compositor_api/qwaylandview.h
+Copyright: 2014, Jolla Ltd, author: <giulio.camuffo@jollamobile.com>
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandclient.cpp
+  src/waylandcompositor/compositor_api/qwaylandclient.h
+Copyright: 2014, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandcompositor.cpp
+  src/waylandcompositor/compositor_api/qwaylandcompositor_p.h
+  src/waylandcompositor/compositor_api/qwaylandquickoutput.cpp
+  src/waylandcompositor/compositor_api/qwaylandquickoutput.h
+  src/waylandcompositor/compositor_api/qwaylandsurface.cpp
+  src/waylandcompositor/compositor_api/qwaylandsurface.h
+Copyright: 2015, The Qt Company Ltd
+  2014, 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylanddestroylistener.h
+Copyright: 2015, The Qt Company Ltd
+  2014, Jolla Ltd, author: <giulio.camuffo@jollamobile.com>
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylanddrag.cpp
+  src/waylandcompositor/compositor_api/qwaylanddrag.h
+  src/waylandcompositor/compositor_api/qwaylandinputpanel.cpp
+  src/waylandcompositor/compositor_api/qwaylandinputpanel.h
+Copyright: 2013, Klarälvdalens Datakonsult AB (KDAB)
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandkeyboard.cpp
+  src/waylandcompositor/compositor_api/qwaylandkeyboard.h
+  src/waylandcompositor/compositor_api/qwaylandkeyboard_p.h
+  src/waylandcompositor/compositor_api/qwaylandpointer_p.h
+  src/waylandcompositor/compositor_api/qwaylandtouch_p.h
+Copyright: 2015, The Qt Company Ltd
+  2013, Klarälvdalens Datakonsult AB (KDAB)
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandoutput.cpp
+  src/waylandcompositor/compositor_api/qwaylandoutput.h
+Copyright: 2014-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+  2013, Klarälvdalens Datakonsult AB (KDAB)
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandoutput_p.h
+Copyright: 2015, The Qt Company Ltd
+  2014-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+  2013, Klarälvdalens Datakonsult AB (KDAB)
+License: GPL-3
+
+Files: src/waylandcompositor/compositor_api/qwaylandquickcompositor.cpp
+  src/waylandcompositor/compositor_api/qwaylandsurface_p.h
+Copyright: 2014, 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+  2014, Jolla Ltd, author: <giulio.camuffo@jollamobile.com>
+License: GPL-3
+
+Files: src/waylandcompositor/extensions/qwaylandshell.cpp
+Copyright: 2015, The Qt Company Ltd
+  2014, 2015, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+License: GPL-3
+
+Files: src/waylandcompositor/extensions/qwlinputmethod.cpp
+  src/waylandcompositor/extensions/qwlinputmethod_p.h
+  src/waylandcompositor/extensions/qwlinputmethodcontext.cpp
+  src/waylandcompositor/extensions/qwlinputmethodcontext_p.h
+  src/waylandcompositor/extensions/qwlinputpanel.cpp
+  src/waylandcompositor/extensions/qwlinputpanel_p.h
+  src/waylandcompositor/extensions/qwltextinput.cpp
+  src/waylandcompositor/extensions/qwltextinput_p.h
+  src/waylandcompositor/extensions/qwltextinputmanager.cpp
+  src/waylandcompositor/extensions/qwltextinputmanager_p.h
+Copyright: 2013, Klarälvdalens Datakonsult AB (KDAB)
+License: GPL-3
+
+Files: src/waylandcompositor/extensions/qwlinputpanelsurface.cpp
+  src/waylandcompositor/extensions/qwlinputpanelsurface_p.h
+Copyright: 2014-2016, Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+  2013, Klarälvdalens Datakonsult AB (KDAB)
+License: GPL-3
+
+Files: src/waylandcompositor/shared/*
+Copyright: 2015, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: src/waylandcompositor/shared/qwaylandxkb.cpp
+  src/waylandcompositor/shared/qwaylandxkb.h
+Copyright: 2015, The Qt Company Ltd
+  2015, Jolla Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: tests/*
+Copyright: 2015, 2016, Pier Luigi Fiorini
+License: GPL-2+
+
+Files: tests/auto/*
+Copyright: 2012-2016, Pier Luigi Fiorini
+License: UNKNOWN
+ Please fill license UNKNOWN from header of tests/auto/*
+
+Files: tools/waylandscanner/*
+Copyright: 2016, The Qt Company Ltd
+License: LGPL-2.1 or LGPL-3
+
+License: BSD-3-clause
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the BSD license.
+ .
+ On Debian systems, the complete text of the BSD license in
+ '/usr/share/common-licenses/BSD'.
+
+License: Expat
+ The MIT License
+ .
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated
+ documentation files (the "Software"), to deal in the Software
+ without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to
+ whom the Software is furnished to do so, subject to the
+ following conditions:
+ .
+ The above copyright notice and this permission notice shall
+ be included in all copies or substantial portions of the
+ Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+ WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+ SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 dated June, 1991, or (at
+ your option) any later version.
+ .
+ On Debian systems, the complete text of version 2 of the GNU General
+ Public License can be found in '/usr/share/common-licenses/GPL-2'.
+
+License: GPL-3
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 3 dated June, 2007.
+ .
+ On Debian systems, the complete text of version 3 of the GNU General
+ Public License can be found in '/usr/share/common-licenses/GPL-3'.
+
+License: LGPL-2.1
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; version 2.1 of the License.
+ .
+ On Debian systems, the complete text of version 2.1 of the GNU Lesser
+ General Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
+
+License: LGPL-2.1+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; version 2.1 of the License, or (at
+ your option) any later version.
+ .
+ On Debian systems, the complete text of version 2.1 of the GNU Lesser
+ General Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
+
+License: LGPL-2.1,
+ Please fill license LGPL-2.1, or LGPL-3 from header of src/platform/deviceintegration/*
+
+License: LGPL-3
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; version 3 of the License.
+ .
+ On Debian systems, the complete text of version 3 of the GNU Lesser
+ General Public License can be found in `/usr/share/common-licenses/LGPL-3'.

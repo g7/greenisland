@@ -1,0 +1,214 @@
+Source: greenisland
+Section: libs
+Priority: optional
+Maintainer: Eugenio Paolantonio (g7) <me@medesimo.eu>
+Build-Depends: debhelper (>= 9),
+               cmake,
+               extra-cmake-modules,
+               qtbase5-dev (>= 5.5.0),
+               qtbase5-private-dev (>= 5.5.0),
+               qtdeclarative5-dev (>= 5.5.0),
+               qtdeclarative5-private-dev (>= 5.5.0),
+               libqt5opengl5-dev (>= 5.5.0),
+               libwayland-dev (>= 1.6.0),
+               libegl1-mesa-dev,
+               libsystemd-dev,
+               libinput-dev (>= 0.12),
+               libglib2.0-dev,
+               libxkbcommon-dev,
+               libdrm-dev,
+               libgbm-dev,
+               libxcb-cursor-dev,
+               libxcb-composite0-dev,
+               libxcursor-dev
+Standards-Version: 3.9.6
+Vcs-Git: https://github.com/g7/greenisland.git
+Vcs-Browser: https://github.com/g7/greenisland
+Homepage: https://github.com/greenisland/greenisland
+
+Package: libgreenisland-compositor0
+Multi-Arch: same
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: QtQuick-based Wayland compositor in library form -- compositor library
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains the compositor library.
+
+Package: libgreenisland-platform0
+Multi-Arch: same
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: QtQuick-based Wayland compositor in library form -- platform library
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains the platform library.
+
+Package: libgreenisland-server0
+Multi-Arch: same
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: QtQuick-based Wayland compositor in library form -- server library
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains the server library.
+
+Package: libgreenisland-client0
+Multi-Arch: same
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: QtQuick-based Wayland compositor in library form -- server library
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains the client library.
+
+Package: libgreenisland-dev
+Section: libdevel
+Multi-Arch: same
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libgreenisland-compositor0 (= ${binary:Version}),
+         libgreenisland-platform0 (= ${binary:Version}),
+         libgreenisland-server0 (= ${binary:Version}),
+         libgreenisland-client0 (= ${binary:Version})
+Description: QtQuick-based Wayland compositor in library form -- development headers
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains the development headers.
+
+Package: libgreenisland-dev-bin
+Section: libdevel
+Multi-Arch: foreign
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libgreenisland-dev (= ${binary:Version})
+Description: QtQuick-based Wayland compositor in library form -- development tools
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains useful development tools.
+
+Package: qml-module-greenisland
+Multi-Arch: same
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: QtQuick-based Wayland compositor in library form -- qml module
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.
+ .
+ This package contains the GreenIsland qml module.
+
+Package: greenisland
+Multi-Arch: foreign
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libgreenisland-compositor0 (= ${binary:Version}),
+         libgreenisland-platform0 (= ${binary:Version}),
+         libgreenisland-server0 (= ${binary:Version}),
+         qml-module-greenisland (= ${binary:Version}),
+         xwayland
+Suggests: weston (>= 1.6.0)
+Description: QtQuick-based Wayland compositor in library form
+ The API extends QtCompositor with additional features needed by any real world
+ Wayland compositor.
+ .
+ Green Island offers multiple screen support and it also implements specific
+ protocols such as xdg-shell, gtk-shell and those for Plasma 5.
+ .
+ Also include a screencaster protocol and command line application, plus a
+ minimal Wayland compositor written with QML.
+ .
+ Green Island can be used by any desktop environment that wish to implement
+ its compositor by using QML or for shells deeply integrated with the compositor
+ in the same process.

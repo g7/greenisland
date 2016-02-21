@@ -1,0 +1,7 @@
+/usr/lib/*/libGreenIslandCompositor.so
+/usr/lib/*/libGreenIslandPlatform.so
+/usr/lib/*/libGreenIslandServer.so
+#/usr/lib/*/pkgconfig
+/usr/lib/*/cmake
+/usr/lib/*/qt5/mkspecs
+/usr/include
