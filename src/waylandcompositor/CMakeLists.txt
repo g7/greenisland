@@ -1,42 +1,71 @@
+find_package(Qt5Gui REQUIRED COMPONENTS Private)
+find_package(Qt5Qml REQUIRED COMPONENTS Private)
+find_package(Qt5Quick REQUIRED COMPONENTS Private)
+
+# Qt 5.5.x doesn't define Qt5Qml and Qt5Quick private
+# include directories, so we have to fix it
+foreach(_mod Qml Quick)
+    foreach(_dir ${Qt5${_mod}_INCLUDE_DIRS})
+        set(_path "${_dir}/Qt${_mod}/${Qt5${_mod}_VERSION_STRING}")
+        if(EXISTS ${_path})
+            list(APPEND Qt5${_mod}_PRIVATE_INCLUDE_DIRS ${_path})
+        endif()
+
+        set(_path "${_dir}/Qt${_mod}/${Qt5${_mod}_VERSION_STRING}/Qt${_mod}")
+        if(EXISTS ${_path})
+            list(APPEND Qt5${_mod}_PRIVATE_INCLUDE_DIRS ${_path})
+        endif()
+    endforeach()
+endforeach()
+
 include_directories(
     ${CMAKE_BINARY_DIR}/headers
     ${CMAKE_BINARY_DIR}/headers/GreenIsland
+    ${CMAKE_BINARY_DIR}/headers/GreenIsland/QtWaylandCompositor
     ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api
+    ${CMAKE_CURRENT_SOURCE_DIR}/extensions
     ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper
     ${CMAKE_CURRENT_SOURCE_DIR}/shared
     ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
+    ${Qt5Qml_PRIVATE_INCLUDE_DIRS}
+    ${Qt5Quick_PRIVATE_INCLUDE_DIRS}
+    ${xkbcommon_INCLUDE_DIRS}
 )
 
-include(../GreenIslandConfigExtrasLocal.cmake)
-include(../GreenIslandMacros.cmake)
+include(${CMAKE_SOURCE_DIR}/src/server/GreenIslandServerConfigExtrasLocal.cmake)
+include(${CMAKE_SOURCE_DIR}/src/server/GreenIslandServerMacros.cmake)
 
 set(SOURCES
-    shared/qwaylandmimehelper.cpp
-    wayland_wrapper/qwlcompositor.cpp
-    wayland_wrapper/qwldatadevice.cpp
-    wayland_wrapper/qwldatadevicemanager.cpp
-    wayland_wrapper/qwldataoffer.cpp
-    wayland_wrapper/qwldatasource.cpp
-    wayland_wrapper/qwldisplay.cpp
-    wayland_wrapper/qwlextendedsurface.cpp
-    wayland_wrapper/qwlinputdevice.cpp
-    wayland_wrapper/qwlinputmethodcontext.cpp
-    wayland_wrapper/qwlinputmethod.cpp
-    wayland_wrapper/qwlinputpanel.cpp
-    wayland_wrapper/qwlinputpanelsurface.cpp
-    wayland_wrapper/qwlkeyboard.cpp
-    wayland_wrapper/qwllistener.cpp
-    wayland_wrapper/qwloutput.cpp
-    wayland_wrapper/qwlpointer.cpp
-    wayland_wrapper/qwlqtkey.cpp
-    wayland_wrapper/qwlqttouch.cpp
-    wayland_wrapper/qwlregion.cpp
-    wayland_wrapper/qwlsubsurface.cpp
-    wayland_wrapper/qwlsurfacebuffer.cpp
-    wayland_wrapper/qwlsurface.cpp
-    wayland_wrapper/qwltextinput.cpp
-    wayland_wrapper/qwltextinputmanager.cpp
-    wayland_wrapper/qwltouch.cpp
+    compositor_api/qwaylandbufferref.cpp
+    compositor_api/qwaylandclient.cpp
+    compositor_api/qwaylandcompositor.cpp
+    compositor_api/qwaylanddestroylistener.cpp
+    compositor_api/qwaylanddrag.cpp
+    compositor_api/qwaylandinput.cpp
+    compositor_api/qwaylandinputpanel.cpp
+    compositor_api/qwaylandkeyboard.cpp
+    compositor_api/qwaylandoutput.cpp
+    compositor_api/qwaylandpointer.cpp
+    compositor_api/qwaylandquickcompositor.cpp
+    compositor_api/qwaylandquickitem.cpp
+    compositor_api/qwaylandquickoutput.cpp
+    compositor_api/qwaylandquicksurface.cpp
+    compositor_api/qwaylandsurface.cpp
+    compositor_api/qwaylandtouch.cpp
+    compositor_api/qwaylandview.cpp
+    extensions/qwaylandquickshellsurfaceitem.cpp
+    extensions/qwaylandshell.cpp
+    extensions/qwaylandwindowmanagerextension.cpp
+    extensions/qwlextendedsurface.cpp
+    extensions/qwlinputmethodcontext.cpp
+    extensions/qwlinputmethod.cpp
+    extensions/qwlinputpanel.cpp
+    extensions/qwlinputpanelsurface.cpp
+    extensions/qwlqtkey.cpp
+    extensions/qwlqttouch.cpp
+    extensions/qwltextinput.cpp
+    extensions/qwltextinputmanager.cpp
+    global/qwaylandextension.cpp
     hardware_integration/qwlclientbufferintegration.cpp
     hardware_integration/qwlclientbufferintegrationfactory.cpp
     hardware_integration/qwlclientbufferintegrationplugin.cpp
@@ -44,24 +73,14 @@ set(SOURCES
     hardware_integration/qwlserverbufferintegration.cpp
     hardware_integration/qwlserverbufferintegrationfactory.cpp
     hardware_integration/qwlserverbufferintegrationplugin.cpp
-    compositor_api/qwaylandbufferref.cpp
-    compositor_api/qwaylandclient.cpp
-    compositor_api/qwaylandcompositor.cpp
-    compositor_api/qwaylanddrag.cpp
-    compositor_api/qwaylandglobalinterface.cpp
-    compositor_api/qwaylandinput.cpp
-    compositor_api/qwaylandinputpanel.cpp
-    compositor_api/qwaylandoutput.cpp
-    compositor_api/qwaylandquickcompositor.cpp
-    compositor_api/qwaylandquickoutput.cpp
-    compositor_api/qwaylandquicksurface.cpp
-    compositor_api/qwaylandsurface.cpp
-    compositor_api/qwaylandsurfaceinterface.cpp
-    compositor_api/qwaylandsurfaceitem.cpp
-    compositor_api/qwaylandsurfaceview.cpp
-    compositor_api/qwaylandtexturebufferattacher.cpp
-    windowmanagerprotocol/waylandwindowmanagerintegration.cpp
+    shared/qwaylandmimehelper.cpp
     shared/qwaylandxkb.cpp
+    wayland_wrapper/qwldatadevice.cpp
+    wayland_wrapper/qwldatadevicemanager.cpp
+    wayland_wrapper/qwldataoffer.cpp
+    wayland_wrapper/qwldatasource.cpp
+    wayland_wrapper/qwlregion.cpp
+    wayland_wrapper/qwlsurfacebuffer.cpp
 )
 
 if(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL")
@@ -116,15 +135,12 @@ target_link_libraries(GreenIslandCompositor
     PUBLIC
         Qt5::Core
         Qt5::Gui
+        Qt5::Qml
         Qt5::Quick
         Wayland::Server
+    PRIVATE
+        ${xkbcommon_LIBRARIES}
 )
-
-if(xkbcommon_FOUND)
-    include_directories(${xkbcommon_INCLUDE_DIRS})
-    add_definitions(-DHAVE_XKBCOMMON)
-    target_link_libraries(GreenIslandCompositor PRIVATE ${xkbcommon_LIBRARIES})
-endif()
 
 if(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL")
     target_link_libraries(GreenIslandCompositor PUBLIC ${OPENGL_LIBRARIES})
@@ -134,6 +150,8 @@ endif()
 
 target_include_directories(
     GreenIslandCompositor
+        PUBLIC
+            "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/headers/GreenIsland>"
         INTERFACE
             "$<INSTALL_INTERFACE:${HAWAII_INCLUDEDIR}>"
             "$<INSTALL_INTERFACE:${GREENISLAND_INCLUDEDIR}>"
@@ -145,25 +163,27 @@ set_target_properties(GreenIslandCompositor PROPERTIES
     EXPORT_NAME Compositor
 )
 
-ecm_generate_headers(GreenIslandCompositor_CamelCase_HEADERS
+generate_headers(GreenIslandCompositor_CamelCase_HEADERS
     HEADER_NAMES
         QWaylandBufferRef
         QWaylandClient
         QWaylandCompositor
+        QWaylandDestroyListener
         QWaylandDrag
-        QWaylandGlobalInterface
         QWaylandInput
         QWaylandInputPanel
+        QWaylandKeyboard,QWaylandKeymap
         QWaylandOutput
+        QWaylandPointer
         QWaylandQuickCompositor
+        QWaylandQuickItem
         QWaylandQuickOutput
         QWaylandQuickSurface
         QWaylandSurface
-        QWaylandSurfaceInterface
-        QWaylandSurfaceItem
-        QWaylandSurfaceView
+        QWaylandTouch
+        QWaylandView
     PREFIX
-        Compositor
+        QtWaylandCompositor
     OUTPUT_DIR
         ${CMAKE_BINARY_DIR}/headers/GreenIsland
     REQUIRED_HEADERS
@@ -172,11 +192,27 @@ ecm_generate_headers(GreenIslandCompositor_CamelCase_HEADERS
         compositor_api
 )
 
-ecm_generate_headers(GreenIslandCompositor_CamelCase_HEADERS
+generate_headers(GreenIslandCompositor_CamelCase_HEADERS
+    HEADER_NAMES
+        QWaylandShell,QWaylandShellSurface
+        QWaylandQuickShellSurfaceItem
+    PREFIX
+        QtWaylandCompositor
+    OUTPUT_DIR
+        ${CMAKE_BINARY_DIR}/headers/GreenIsland
+    REQUIRED_HEADERS
+        GreenIslandCompositor_HEADERS
+    RELATIVE
+        extensions
+)
+
+generate_headers(GreenIslandCompositor_CamelCase_HEADERS
     HEADER_NAMES
         QWaylandExport
+        QWaylandExtension,QWaylandExtensionTemplate,QWaylandObject
+        QWaylandQuickExtension
     PREFIX
-        Compositor
+        QtWaylandCompositor
     OUTPUT_DIR
         ${CMAKE_BINARY_DIR}/headers/GreenIsland
     REQUIRED_HEADERS
@@ -185,40 +221,98 @@ ecm_generate_headers(GreenIslandCompositor_CamelCase_HEADERS
         global
 )
 
-install(TARGETS GreenIslandCompositor
-        EXPORT GreenIslandTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+private_headers(GreenIslandCompositor_PRIVATE_HEADERS
+    HEADERS
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandcompositor_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylanddestroylistener_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandinput_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandkeyboard_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandoutput_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandpointer_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandquickitem_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandsurface_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandtouch_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/compositor_api/qwaylandview_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwaylandquickshellsurfaceitem_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwaylandshell_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwaylandwindowmanagerextension_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlextendedsurface_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlinputmethodcontext_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlinputmethod_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlinputpanel_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlinputpanelsurface_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlqtkey_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwlqttouch_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwltextinputmanager_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/extensions/qwltextinput_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/global/qwaylandextension_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlclientbufferintegrationfactory_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlclientbufferintegration_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlclientbufferintegrationplugin_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlhwintegration_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlserverbufferintegrationfactory_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlserverbufferintegration_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/hardware_integration/qwlserverbufferintegrationplugin_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper/qwldatadevicemanager_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper/qwldatadevice_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper/qwldataoffer_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper/qwldatasource_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper/qwlregion_p.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/wayland_wrapper/qwlsurfacebuffer_p.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-hardware-integration.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-input-method.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-qtkey-extension.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-surface-extension.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-text.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-touch-extension.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-wayland.h
+        ${CMAKE_CURRENT_BINARY_DIR}/qwayland-server-windowmanager.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-hardware-integration-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-hardware-integration-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-input-method-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-input-method-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-qtkey-extension-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-qtkey-extension-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-surface-extension-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-surface-extension-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-text-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-text-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-touch-extension-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-touch-extension-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-wayland-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-wayland-server-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-windowmanager-client-protocol.h
+        ${CMAKE_CURRENT_BINARY_DIR}/wayland-windowmanager-server-protocol.h
+    OUTPUT_DIR
+        ${CMAKE_BINARY_DIR}/headers/GreenIsland/QtWaylandCompositor
+)
 
-install(FILES ${GreenIslandCompositor_CamelCase_HEADERS}
-        DESTINATION ${GREENISLAND_INCLUDEDIR}/Compositor
-        COMPONENT Devel)
+install(TARGETS GreenIslandCompositor
+        EXPORT GreenIslandCompositorTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(
     FILES
+        ${GreenIslandCompositor_CamelCase_HEADERS}
         ${GreenIslandCompositor_HEADERS}
-        compositor_api/qwaylandbufferref.h
-        compositor_api/qwaylandclient.h
-        compositor_api/qwaylandcompositor.h
-        compositor_api/qwaylanddrag.h
-        compositor_api/qwaylandglobalinterface.h
-        compositor_api/qwaylandinput.h
-        compositor_api/qwaylandinputpanel.h
-        compositor_api/qwaylandoutput.h
-        compositor_api/qwaylandquickcompositor.h
-        compositor_api/qwaylandquickoutput.h
-        compositor_api/qwaylandquicksurface.h
-        compositor_api/qwaylandsurface.h
-        compositor_api/qwaylandsurfaceinterface.h
-        compositor_api/qwaylandsurfaceitem.h
-        compositor_api/qwaylandsurface_p.h
-        compositor_api/qwaylandsurfaceview.h
-        compositor_api/qwaylandtexturebufferattacher_p.h
-        global/qwaylandexport.h
     DESTINATION
-        ${GREENISLAND_INCLUDEDIR}/compositor
+        ${GREENISLAND_INCLUDEDIR}/QtWaylandCompositor
     COMPONENT
         Devel
 )
 
+# CMake package config
+set(GreenIslandCompositor_CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/GreenIslandCompositor")
+ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/GreenIslandCompositorConfig.cmake.in"
+                                  "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandCompositorConfig.cmake"
+                                  INSTALL_DESTINATION ${GreenIslandCompositor_CMAKECONFIG_INSTALL_DIR})
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandCompositorConfig.cmake"
+        DESTINATION "${GreenIslandCompositor_CMAKECONFIG_INSTALL_DIR}"
+        COMPONENT Devel)
+install(EXPORT GreenIslandCompositorTargets
+        DESTINATION "${GreenIslandCompositor_CMAKECONFIG_INSTALL_DIR}"
+        FILE GreenIslandCompositorTargets.cmake NAMESPACE GreenIsland::)
+
+# qmake pri file
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME GreenIslandCompositor
                       LIB_NAME GreenIslandCompositor
@@ -228,6 +322,7 @@ ecm_generate_pri_file(BASE_NAME GreenIslandCompositor
 install(FILES ${PRI_FILENAME}
         DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
+# pkg-config file
 include(ECMGeneratePkgConfigFile)
 ecm_generate_pkgconfig_file(BASE_NAME GreenIslandCompositor
                             LIB_NAME GreenIslandCompositor

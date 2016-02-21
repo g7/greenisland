@@ -15,23 +15,21 @@ set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/GreenIsland")
 
 ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/GreenIslandConfig.cmake.in"
                                   "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandConfig.cmake"
-                                  INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR})
+                                  INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandConfig.cmake"
-              "${CMAKE_CURRENT_SOURCE_DIR}/GreenIslandConfigExtras.cmake"
               "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandConfigVersion.cmake"
-              "${CMAKE_CURRENT_SOURCE_DIR}/GreenIslandMacros.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel)
-
-install(EXPORT GreenIslandTargets
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        FILE GreenIslandTargets.cmake NAMESPACE GreenIsland::)
 
 install(FILES ${CMAKE_BINARY_DIR}/headers/greenisland_version.h
         DESTINATION ${HAWAII_INCLUDEDIR} COMPONENT Devel)
 
-add_subdirectory(platform)
+include(GenerateHeaders)
+include(PrivateHeaders)
+
+add_subdirectory(client)
 add_subdirectory(hardwareintegration)
-add_subdirectory(waylandcompositor)
+add_subdirectory(platform)
 add_subdirectory(server)
+add_subdirectory(waylandcompositor)

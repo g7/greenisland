@@ -30,26 +30,6 @@ set_package_properties(Fontconfig PROPERTIES
     TYPE REQUIRED
     PURPOSE "Required by the QPA plugin")
 
-# pthread
-find_package(Threads)
-set_package_properties(Threads PROPERTIES
-    TYPE REQUIRED
-    PURPOSE "Required by the vt handler code")
-
-include_directories(
-    ${CMAKE_BINARY_DIR}/headers
-    ${CMAKE_BINARY_DIR}/headers/GreenIsland
-    ${Qt5Core_PRIVATE_INCLUDE_DIRS}
-    ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
-    ${UDEV_INCLUDE_DIR}
-    ${gio_INCLUDE_DIR}
-)
-
-add_definitions(
-    -DMESA_EGL_NO_X11_HEADERS
-    -DQ_FONTCONFIGDATABASE
-)
-
 set(SOURCES
     logging.cpp
     deviceintegration/deviceintegration_p.cpp
@@ -60,6 +40,7 @@ set(SOURCES
     deviceintegration/eglfsoffscreenwindow.cpp
     deviceintegration/eglfsscreen.cpp
     deviceintegration/eglfswindow.cpp
+    deviceintegration/eglfsxkb.cpp
     eglconvenience/eglconvenience.cpp
     eglconvenience/eglstreamconvenience.cpp
     udev/udev.cpp
@@ -86,43 +67,45 @@ if(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL")
     )
 endif()
 
-if(X11_FOUND)
-    set(SOURCES
-        ${SOURCES}
-        eglconvenience/xlibeglintegration.cpp
-    )
-endif()
-
 qt5_add_resources(SOURCES deviceintegration/cursor.qrc)
 
 add_library(GreenIslandPlatform SHARED ${SOURCES})
 generate_export_header(GreenIslandPlatform EXPORT_FILE_NAME ${CMAKE_BINARY_DIR}/headers/GreenIsland/platform/greenislandplatform_export.h)
 add_library(GreenIsland::Platform ALIAS GreenIslandPlatform)
-target_link_libraries(GreenIslandPlatform
-  PUBLIC
-    Qt5::Core
-    Qt5::DBus
-    Qt5::Gui
-    EGL::EGL
-  PRIVATE
-    ${UDEV_LIBS}
-    Libinput::Libinput
-    ${gio_LIBRARIES}
-    ${FONTCONFIG_LIBRARIES}
-    ${FREETYPE_LIBRARIES}
-    Qt5PlatformSupport::Qt5PlatformSupport
-    Threads::Threads
+
+target_include_directories(GreenIslandPlatform
+    PUBLIC
+        ${UDEV_INCLUDE_DIR}
+        ${xkbcommon_INCLUDE_DIRS}
+        ${gio_INCLUDE_DIR}
+    PRIVATE
+        ${CMAKE_BINARY_DIR}/headers
+        ${CMAKE_BINARY_DIR}/headers/GreenIsland
+        ${Qt5Core_PRIVATE_INCLUDE_DIRS}
+        ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
 )
 
-if(xkbcommon_FOUND)
-    include_directories(${xkbcommon_INCLUDE_DIRS})
-    add_definitions(-DHAVE_XKBCOMMON)
-    target_link_libraries(GreenIslandPlatform PRIVATE ${xkbcommon_LIBRARIES})
-endif()
+target_link_libraries(GreenIslandPlatform
+    PUBLIC
+        Qt5::Core
+        Qt5::DBus
+        Qt5::Gui
+        EGL::EGL
+        ${UDEV_LIBS}
+        ${xkbcommon_LIBRARIES}
+        ${gio_LIBRARIES}
+    PRIVATE
+        Libinput::Libinput
+        ${FONTCONFIG_LIBRARIES}
+        ${FREETYPE_LIBRARIES}
+        Qt5PlatformSupport::Qt5PlatformSupport
+)
 
-if(X11_FOUND)
-    target_link_libraries(GreenIslandPlatform PRIVATE ${X11_LIBRARIES})
-endif()
+target_compile_definitions(GreenIslandPlatform
+    PUBLIC
+        -DMESA_EGL_NO_X11_HEADERS
+        -DQ_FONTCONFIGDATABASE
+)
 
 if(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL")
     target_link_libraries(GreenIslandPlatform PUBLIC ${OPENGL_LIBRARIES})
@@ -152,6 +135,7 @@ ecm_generate_headers(GreenIslandPlatform_CAMELCASE_HEADERS
         EglFSOffscreenWindow
         EglFSScreen
         EglFSWindow
+        EglFSXkb
     PREFIX
         Platform
     OUTPUT_DIR
@@ -168,7 +152,6 @@ ecm_generate_headers(GreenIslandPlatform_CAMELCASE_HEADERS
         EGLPbuffer
         EGLPlatformContext
         EGLStreamConvenience
-        XlibEglIntegration
     PREFIX
         Platform
     OUTPUT_DIR
@@ -251,8 +234,21 @@ install(
 )
 
 install(TARGETS GreenIslandPlatform
-        EXPORT GreenIslandTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+        EXPORT GreenIslandPlatformTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
+# CMake package config
+set(GreenIslandPlatform_CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/GreenIslandPlatform")
+ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/GreenIslandPlatformConfig.cmake.in"
+                                  "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandPlatformConfig.cmake"
+                                  INSTALL_DESTINATION ${GreenIslandPlatform_CMAKECONFIG_INSTALL_DIR})
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/GreenIslandPlatformConfig.cmake"
+        DESTINATION "${GreenIslandPlatform_CMAKECONFIG_INSTALL_DIR}"
+        COMPONENT Devel)
+install(EXPORT GreenIslandPlatformTargets
+        DESTINATION "${GreenIslandPlatform_CMAKECONFIG_INSTALL_DIR}"
+        FILE GreenIslandPlatformTargets.cmake NAMESPACE GreenIsland::)
+
+# qmake pri file
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME GreenIslandPlatform
                       LIB_NAME GreenIslandPlatform
@@ -262,10 +258,11 @@ ecm_generate_pri_file(BASE_NAME GreenIslandPlatform
 install(FILES ${PRI_FILENAME}
         DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
+# pkg-config file
 include(ECMGeneratePkgConfigFile)
 ecm_generate_pkgconfig_file(BASE_NAME GreenIslandPlatform
                             LIB_NAME GreenIslandPlatform
-                            DEPS "Qt5Core Qt5DBus Qt5Gui"
+                            DEPS "Qt5Core Qt5DBus Qt5Gui xkbcommon"
                             FILENAME_VAR PKGCONFIG_FILENAME
                             INCLUDE_INSTALL_DIR "${HAWAII_INCLUDEDIR} ${GREENISLAND_INCLUDEDIR}"
                             INSTALL)

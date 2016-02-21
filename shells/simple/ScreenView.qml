@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2014-2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
@@ -25,47 +25,58 @@
  ***************************************************************************/
 
 import QtQuick 2.0
+import QtQuick.Window 2.2
+import GreenIsland 1.0
 
-Item {
-    readonly property string name: _greenisland_output.name
-    readonly property int number: _greenisland_output.number
-    readonly property bool primary: _greenisland_output.primary
+WaylandOutput {
+    property alias surfacesArea: backgroundLayer
 
-    readonly property alias currentWorkspace: backgroundLayer
-    property alias zoomEnabled: zoomArea.enabled
+    id: output
+    manufacturer: nativeScreen.manufacturer
+    model: nativeScreen.model
+    position: nativeScreen.position
+    physicalSize: nativeScreen.physicalSize
+    subpixel: nativeScreen.subpixel
+    transform: nativeScreen.transform
+    scaleFactor: nativeScreen.scaleFactor
+    sizeFollowsWindow: true
+    window: Window {
+        property QtObject output
 
-    id: root
-    transform: Scale {
-        id: screenScaler
-        origin.x: zoomArea.x2
-        origin.y: zoomArea.y2
-        xScale: zoomArea.zoom2
-        yScale: zoomArea.zoom2
-    }
+        id: window
+        x: nativeScreen.position.x
+        y: nativeScreen.position.y
+        width: nativeScreen.size.width
+        height: nativeScreen.size.height
+        flags: Qt.FramelessWindowHint
+        visible: false
 
-    /*
-     * Screen zoom handler
-     */
+        KeyBindingsFilter {
+            anchors.fill: parent
+            keyBindings: compositor.keyBindingsManager
+        }
 
-    ScreenZoom {
-        id: zoomArea
-        anchors.fill: parent
-        scaler: screenScaler
-        enabled: true
-        z: 3000
-    }
+        LocalPointerTracker {
+            id: localPointerTracker
+            anchors.fill: parent
+            globalTracker: globalPointerTracker
 
-    /*
-     * Workspace
-     */
+            Image {
+                id: backgroundLayer
+                anchors.fill: parent
+                source: "images/wallpaper.png"
+                sourceSize.width: width
+                sourceSize.height: height
+                fillMode: Image.Tile
+            }
 
-    // Background is below everything
-    Image {
-        id: backgroundLayer
-        anchors.fill: parent
-        source: "images/wallpaper.png"
-        sourceSize.width: width
-        sourceSize.height: height
-        fillMode: Image.Tile
+            PointerItem {
+                id: cursor
+                inputDevice: output.compositor.defaultInputDevice
+                x: localPointerTracker.mouseX - hotspotX
+                y: localPointerTracker.mouseY - hotspotY
+                visible: globalPointerTracker.output === output
+            }
+        }
     }
 }

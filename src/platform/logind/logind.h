@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -85,6 +85,8 @@ public Q_SLOTS:
 
     int takeDevice(const QString &fileName);
     void releaseDevice(int fd);
+
+    void switchTo(quint32 vt);
 
 Q_SIGNALS:
     void connectedChanged(bool);

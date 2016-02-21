@@ -1,7 +1,7 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
  *
  * Author(s):
@@ -270,11 +270,17 @@ EglFSKmsScreen *EglFSKmsDevice::screenForConnector(drmModeResPtr resources, drmM
                        << "@" << refresh << "hz for output" << connectorName;
     }
 
+    static const int width = qEnvironmentVariableIntValue("GREENISLAND_QPA_PHYSICAL_WIDTH");
+    static const int height = qEnvironmentVariableIntValue("GREENISLAND_QPA_PHYSICAL_HEIGHT");
+    QSizeF size(width, height);
+    if (size.isEmpty())
+        size = QSizeF(connector->mmWidth, connector->mmHeight);
+
     EglFSKmsOutput output = {
         QString::fromUtf8(connectorName),
         connector->connector_id,
         crtc_id,
-        QSizeF(connector->mmWidth, connector->mmHeight),
+        size,
         selected_mode,
         false,
         drmModeGetCrtc(m_dri_fd, crtc_id),

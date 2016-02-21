@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2015 Pier Luigi Fiorini
  *
@@ -47,6 +47,10 @@ class HardwareDetector
 public:
     static QString detectHardware()
     {
+        // Detect Wayland
+        if (!qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY"))
+            return QStringLiteral("wayland");
+
         // Detect X11
         if (!qEnvironmentVariableIsEmpty("DISPLAY"))
             return QStringLiteral("x11");

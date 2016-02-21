@@ -1,10 +1,10 @@
 /****************************************************************************
  * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:GPL2+$
  *
@@ -240,11 +240,6 @@ QStringList CompositorLauncher::compositorArgs() const
     case HwComposerMode:
         if (m_hasLibInputPlugin)
             args << QStringLiteral("-plugin") << QStringLiteral("libinput");
-        /*
-        else
-            args << QStringLiteral("-plugin") << QStringLiteral("EvdevMouse")
-                 << QStringLiteral("-plugin") << QStringLiteral("EvdevKeyboard");
-        */
         break;
     case NestedMode:
         args << QStringLiteral("--nested");
@@ -268,7 +263,7 @@ QProcessEnvironment CompositorLauncher::compositorEnv() const
     // Specific environment
     switch (m_mode) {
     case NestedMode:
-        env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("wayland"));
+        env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("greenisland"));
         env.insert(QStringLiteral("WAYLAND_DISPLAY"), m_weston->socketName());
 
         if (m_hardware == BroadcomHardware) {

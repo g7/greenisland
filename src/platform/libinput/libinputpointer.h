@@ -1,17 +1,17 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
- * Copyright (C) 2015 The Qt Company Ltd.
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
  *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
- * $BEGIN_LICENSE:LGPL213$
+ * $BEGIN_LICENSE:LGPL2.1+$
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1, or version 3.
+ * the Free Software Foundation, either version 2.1 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -57,12 +57,15 @@ public:
 
     void handleButton(libinput_event_pointer *e);
     void handleMotion(libinput_event_pointer *e);
+    void handleAbsoluteMotion(libinput_event_pointer *e);
     void handleAxis(libinput_event_pointer *e);
 
 private:
     LibInputHandler *m_handler;
     QPoint m_pt;
     Qt::MouseButtons m_buttons;
+
+    void processMotion(const QPoint &pos);
 };
 
 } // namespace Platform

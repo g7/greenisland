@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -125,6 +125,13 @@ LibInputManager::LibInputManager(QObject *parent)
     });
 }
 
+LibInputHandler *LibInputManager::handler() const
+{
+    return m_handler;
+}
+
 } // namespace Platform
 
 } // namespace GreenIsland
+
+#include "moc_libinputmanager_p.cpp"

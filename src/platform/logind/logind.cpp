@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -40,6 +40,7 @@
 const static QString login1Service = QLatin1String("org.freedesktop.login1");
 const static QString login1Object = QLatin1String("/org/freedesktop/login1");
 const static QString login1ManagerInterface = QLatin1String("org.freedesktop.login1.Manager");
+const static QString login1SeatInterface = QLatin1String("org.freedesktop.login1.Seat");
 const static QString login1SessionInterface = QLatin1String("org.freedesktop.login1.Session");
 
 const static QString dbusService = QLatin1String("org.freedesktop.DBus");
@@ -563,6 +564,20 @@ void Logind::releaseDevice(int fd)
     message.setArguments(QVariantList()
                          << QVariant(major(st.st_rdev))
                          << QVariant(minor(st.st_rdev)));
+
+    d->bus.asyncCall(message);
+}
+
+void Logind::switchTo(quint32 vt)
+{
+    Q_D(Logind);
+
+    QDBusMessage message =
+            QDBusMessage::createMethodCall(login1Service,
+                                           QLatin1String("/org/freedesktop/login1/seat/self"),
+                                           login1SeatInterface,
+                                           QLatin1String("SwitchTo"));
+    message.setArguments(QVariantList() << QVariant(vt));
 
     d->bus.asyncCall(message);
 }

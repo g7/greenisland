@@ -11,7 +11,7 @@ if(POLICY CMP0063)
 endif()
 
 # Set version
-set(PROJECT_VERSION "0.7.1")
+set(PROJECT_VERSION "0.7.90")
 set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_SOVERSION 0)
 
@@ -70,7 +70,7 @@ if ("${ECM_VERSION}" VERSION_LESS "1.7.0")
 endif()
 
 # Find Qt5
-set(REQUIRED_QT_VERSION 5.4.0)
+set(REQUIRED_QT_VERSION 5.5.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core DBus Gui Qml Quick)
 
 # OpenGL
@@ -89,8 +89,6 @@ set_package_properties(OpenGLES PROPERTIES
 
 # EGL
 find_package(EGL REQUIRED)
-set(EGL_IMPLEMENTATION EGL)
-set(EGL_TARGET EGL::EGL)
 
 # GL requirements
 if(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL")
@@ -141,10 +139,7 @@ add_feature_info("systemd" systemd_FOUND "Required for systemd integration")
 
 # xkbcommon
 pkg_check_modules(xkbcommon xkbcommon REQUIRED)
-if(xkbcommon_FOUND)
-    set(HAVE_XKBCOMMON 1)
-endif()
-add_feature_info("xkbcommon" xkbcommon_FOUND "Require for keymap support")
+add_feature_info("xkbcommon" xkbcommon_FOUND "Required for keymap support")
 
 # Subdirectories
 if(ENABLE_ONLY_EGLDEVICEINTEGRATION)

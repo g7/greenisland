@@ -1,7 +1,7 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
  *
  * Author(s):
@@ -33,6 +33,10 @@
 
 #include <libinput.h>
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+#include <QtGui/private/qhighdpiscaling_p.h>
+#endif
+
 namespace GreenIsland {
 
 namespace Platform {
@@ -46,7 +50,12 @@ LibInputPointer::LibInputPointer(LibInputHandler *handler)
 void LibInputPointer::setPosition(const QPoint &pos)
 {
     // Constrain position to the virtual desktop
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QScreen *const primaryScreen = QGuiApplication::primaryScreen();
+    const QRect geometry = QHighDpi::toNativePixels(primaryScreen->virtualGeometry(), primaryScreen);
+#else
     const QRect geometry = QGuiApplication::primaryScreen()->virtualGeometry();
+#endif
     m_pt.setX(qBound(geometry.left(), pos.x(), geometry.right()));
     m_pt.setX(qBound(geometry.top(), pos.x(), geometry.bottom()));
 }
@@ -95,18 +104,20 @@ void LibInputPointer::handleMotion(libinput_event_pointer *e)
     QPointF delta(libinput_event_pointer_get_dx(e),
                   libinput_event_pointer_get_dy(e));
     QPoint pos = m_pt + delta.toPoint();
+    processMotion(pos);
+}
 
+void LibInputPointer::handleAbsoluteMotion(libinput_event_pointer *e)
+{
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QScreen *const primaryScreen = QGuiApplication::primaryScreen();
+    const QRect geometry = QHighDpi::toNativePixels(primaryScreen->virtualGeometry(), primaryScreen);
+#else
     const QRect geometry = QGuiApplication::primaryScreen()->virtualGeometry();
-    m_pt.setX(qBound(geometry.left(), pos.x(), geometry.right()));
-    m_pt.setY(qBound(geometry.top(), pos.y(), geometry.bottom()));
-
-    LibInputMouseEvent event;
-    event.pos = m_pt;
-    event.buttons = m_buttons;
-    event.modifiers = QGuiApplication::keyboardModifiers();
-    event.wheelDelta = 0;
-    event.wheelOrientation = Qt::Horizontal;
-    Q_EMIT m_handler->mouseMoved(event);
+#endif
+    QPointF abs(libinput_event_pointer_get_absolute_x_transformed(e, geometry.size().width()),
+                  libinput_event_pointer_get_absolute_y_transformed(e, geometry.size().height()));
+    processMotion(abs.toPoint());
 }
 
 void LibInputPointer::handleAxis(libinput_event_pointer *e)
@@ -133,6 +144,26 @@ void LibInputPointer::handleAxis(libinput_event_pointer *e)
         event.wheelOrientation = Qt::Vertical;
         Q_EMIT m_handler->mouseWheel(event);
     }
+}
+
+void LibInputPointer::processMotion(const QPoint &pos)
+{
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QScreen *const primaryScreen = QGuiApplication::primaryScreen();
+    const QRect geometry = QHighDpi::toNativePixels(primaryScreen->virtualGeometry(), primaryScreen);
+#else
+    const QRect geometry = QGuiApplication::primaryScreen()->virtualGeometry();
+#endif
+    m_pt.setX(qBound(geometry.left(), pos.x(), geometry.right()));
+    m_pt.setY(qBound(geometry.top(), pos.y(), geometry.bottom()));
+
+    LibInputMouseEvent event;
+    event.pos = m_pt;
+    event.buttons = m_buttons;
+    event.modifiers = QGuiApplication::keyboardModifiers();
+    event.wheelDelta = 0;
+    event.wheelOrientation = Qt::Horizontal;
+    Q_EMIT m_handler->mouseMoved(event);
 }
 
 } // namespace Platform

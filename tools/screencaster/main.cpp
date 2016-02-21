@@ -1,57 +1,65 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
- * Copyright (C) 2014 Jolla Ltd.
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
  *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
- * Original Author(s):
- *    Giulio Camuffo <giulio.camuffo@jollamobile.com>
+ * $BEGIN_LICENSE:GPL2+$
  *
- * $BEGIN_LICENSE:LGPL2.1$
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation
- * and appearing in the file LICENSE.LGPLv21 included in the packaging
- * of this file.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * $END_LICENSE$
  ***************************************************************************/
 
 #include <QtCore/QCommandLineParser>
 #include <QtCore/QCommandLineOption>
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
 #include <QtGui/QGuiApplication>
 
 #include "config.h"
-#include "screencaster.h"
+#include "application.h"
 
 #define TR(x) QT_TRANSLATE_NOOP("Command line parser", QStringLiteral(x))
 
 int main(int argc, char *argv[])
 {
+    // Setup the application
     QGuiApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("greenisland-screencaster"));
     app.setApplicationVersion(QStringLiteral(GREENISLAND_VERSION_STRING));
     app.setQuitOnLastWindowClosed(false);
 
+    // Command line parser
     QCommandLineParser parser;
-    parser.setApplicationDescription(QStringLiteral("Green Island Screencast recorder"));
+    parser.setApplicationDescription(QStringLiteral("Command line screencaster"));
     parser.addHelpOption();
     parser.addVersionOption();
 
     // Output file name
-    QCommandLineOption outputOption(QStringList() << QStringLiteral("o") << QStringLiteral("output"),
-                               TR("Output file name"), TR("filename"));
+    QCommandLineOption outputOption(QStringList() << QStringLiteral("f") << QStringLiteral("filename"),
+                                    TR("Output file name."), TR("filename"));
     parser.addOption(outputOption);
 
-    // Number of frames to capture
-    QCommandLineOption framesOption(QStringList() << QStringLiteral("n") << QStringLiteral("number-of-frames"),
-                                    TR("Number of frames to record"), TR("number-of-frames"));
+    // Still images only
+    QCommandLineOption stillOption(QStringList() << QStringLiteral("s") << QStringLiteral("still-images"),
+                                   TR("Records frames into PNG images."));
+    parser.addOption(stillOption);
+
+    // Maximum number of frames to capture
+    QCommandLineOption framesOption(QStringList() << QStringLiteral("n") << QStringLiteral("nframes"),
+                                    TR("Maximum number of frames to record."), TR("number-of-frames"));
     parser.addOption(framesOption);
 
     // Parse command line
@@ -59,29 +67,32 @@ int main(int argc, char *argv[])
 
     // Need to be running with wayland QPA
     if (!QGuiApplication::platformName().startsWith(QStringLiteral("wayland"))) {
-        qCritical() << "greenisland-screencast requires a Wayland session";
+        qCritical("greenisland-screencast requires a Wayland session");
         return 1;
     }
 
     // Arguments check
-    if (!parser.isSet(outputOption)) {
-        qCritical() << "Output file name is mandatory!";
+    if (!parser.isSet(outputOption) && !parser.isSet(stillOption)) {
+        qCritical("You must specify either an output file name or to record still images");
+        return 1;
+    }
+    if (parser.isSet(outputOption) && parser.isSet(stillOption)) {
+        qCritical("The --filename and --still-images arguments conflict with eath other");
         return 1;
     }
 
-    // Output file name
-    const QString fileName = parser.value(outputOption);
-    QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly)) {
-        qCritical() << "Failed to open output file for writing";
-        return 1;
+    // Maximum number of frames to capture (if specified must be at least 30)
+    int frames = 0;
+    if (parser.isSet(framesOption)) {
+        frames = parser.value(framesOption).toInt();
+        if (frames < 30)
+            frames = 0;
     }
-
-    unsigned int numberOfFrames = 0;
-    if (parser.isSet(framesOption))
-        numberOfFrames = parser.value(framesOption).toInt();
 
     // Start the screen caster
-    ScreenCaster screenCaster(&file, numberOfFrames);
+    Application *screencaster = new Application(parser.value(outputOption), frames,
+                                                parser.isSet(stillOption), &app);
+    QGuiApplication::postEvent(screencaster, new StartupEvent());
+
     return app.exec();
 }

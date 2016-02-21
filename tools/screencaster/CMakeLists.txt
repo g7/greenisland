@@ -1,23 +1,16 @@
-include(${CMAKE_SOURCE_DIR}/src/GreenIslandConfigExtrasLocal.cmake)
-include(${CMAKE_SOURCE_DIR}/src/GreenIslandMacros.cmake)
-
 include_directories(
     ${CMAKE_BINARY_DIR}/headers
+    ${CMAKE_SOURCE_DIR}/src
     ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
 )
 
 set(SOURCES
     main.cpp
-    screencaster.cpp
-)
-
-greenisland_add_client_protocol(SOURCES
-    PROTOCOL ${CMAKE_SOURCE_DIR}/data/protocols/greenisland/greenisland-recorder.xml
-    BASENAME greenisland-recorder
-    PREFIX greenisland_
+    application.cpp
+    recorder.cpp
 )
 
 add_executable(greenisland-screencaster ${SOURCES})
-target_link_libraries(greenisland-screencaster Qt5::Gui Wayland::Client)
+target_link_libraries(greenisland-screencaster GreenIsland::Client)
 
 install(TARGETS greenisland-screencaster DESTINATION ${BIN_INSTALL_DIR})

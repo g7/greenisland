@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -51,6 +51,8 @@ class LibInputManager : public QObject
     Q_OBJECT
 public:
     explicit LibInputManager(QObject *parent = 0);
+
+    LibInputHandler *handler() const;
 
 private:
     LibInputHandler *m_handler;

@@ -11,18 +11,10 @@ include_directories(
     ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
 )
 
-add_definitions(-DMESA_EGL_NO_X11_HEADERS)
-
 set(SOURCES
     eglfsx11integration.cpp
     main.cpp
 )
-
-if(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL "GL")
-    set(GL_TARGET ${OPENGL_LIBRARIES})
-else()
-    set(GL_TARGET ${OPENGLES_LIBRARIES})
-endif()
 
 add_library(x11 SHARED MODULE ${SOURCES})
 target_link_libraries(x11
@@ -30,8 +22,6 @@ target_link_libraries(x11
     ${X11_LIBRARIES}
     XCB::XCB
     X11::XCB
-    EGL::EGL
-    ${GL_TARGET}
 )
 
 install(TARGETS x11

@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2015 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
@@ -496,3 +496,5 @@ void EglFSCursor::draw(const QRectF &r)
 } // namespace Platform
 
 } // namespace GreenIsland
+
+#include "moc_eglfscursor.cpp"

@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2015 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
@@ -28,6 +28,7 @@
 #include <QtGui/QWindow>
 #include <QtGui/QPainter>
 #include <QtGui/qpa/qplatformbackingstore.h>
+#include <QtGui/private/qwindow_p.h>
 
 #include "openglcompositorbackingstore.h"
 #include "openglcompositor.h"
@@ -181,6 +182,10 @@ void OpenGLCompositorBackingStore::composeAndFlush(QWindow *window, const QRegio
         return;
 
     dstCtx->makeCurrent(dstWin);
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QWindowPrivate::get(window)->lastComposeTime.start();
+#endif
 
     m_textures->clear();
     for (int i = 0; i < textures->count(); ++i)

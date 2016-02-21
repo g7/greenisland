@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -24,39 +24,31 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef FAKESCREENBACKEND_H
-#define FAKESCREENBACKEND_H
+#ifndef GREENISLAND_FAKESCREENBACKEND_H
+#define GREENISLAND_FAKESCREENBACKEND_H
 
-#include "screenbackend.h"
-
-Q_DECLARE_LOGGING_CATEGORY(FAKE_BACKEND)
+#include <GreenIsland/Server/ScreenBackend>
 
 namespace GreenIsland {
 
-class ScreenConfiguration;
-class ScreenOutput;
+namespace Server {
 
-class FakeScreenBackend : public ScreenBackend
+class GREENISLANDSERVER_EXPORT FakeScreenBackend : public ScreenBackend
 {
     Q_OBJECT
 public:
-    FakeScreenBackend(Compositor *compositor, QObject *parent = 0);
-    ~FakeScreenBackend();
+    FakeScreenBackend(QObject *parent = Q_NULLPTR);
 
-    void loadConfiguration(const QString &fileName);
+    void setConfiguration(const QString &fileName);
 
-public Q_SLOTS:
-    void acquireConfiguration();
+    void acquireConfiguration() Q_DECL_OVERRIDE;
 
 private:
-    ScreenConfiguration *m_config;
-    QMap<ScreenOutput *, Output *> m_outputMap;
-
-private Q_SLOTS:
-    void screenAdded(ScreenOutput *so);
-    void screenRemoved(ScreenOutput *so);
+    QString m_fileName;
 };
 
-}
+} // namespace Server
 
-#endif // FAKESCREENBACKEND_H
+} // namespace GreenIsland
+
+#endif // GREENISLAND_FAKESCREENBACKEND_H

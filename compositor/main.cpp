@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2012-2014 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2012-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:GPL2+$
  *
@@ -49,9 +49,6 @@ int main(int argc, char *argv[])
     app.setOrganizationDomain(QStringLiteral("hawaiios.org"));
     app.setQuitOnLastWindowClosed(false);
 
-    // Home application
-    GreenIsland::HomeApplication homeApp;
-
     // Command line parser
     QCommandLineParser parser;
     parser.setApplicationDescription(TR("QtQuick Wayland compositor"));
@@ -94,10 +91,17 @@ int main(int argc, char *argv[])
 
     // Compositor package
     QCommandLineOption shellOption(QStringLiteral("shell"),
-                                   TR("Force loading the given shell"),
+                                   TR("Load the given shell"),
                                    TR("shell"),
                                    QStringLiteral("org.hawaiios.greenisland"));
     parser.addOption(shellOption);
+
+    // Shell main file
+    QCommandLineOption qmlOption(QStringLiteral("qml"),
+                                 TR("Load a shell main QML file, takes " \
+                                    "precedence over the --shell argument."),
+                                 TR("filename"));
+    parser.addOption(qmlOption);
 
     // Parse command line
     parser.process(app);
@@ -112,16 +116,20 @@ int main(int argc, char *argv[])
 #endif
     QString fakeScreenData = parser.value(fakeScreenOption);
     int idleInterval = parser.value(idleTimeOption).toInt();
+    if (idleInterval >= 5)
+        idleInterval *= 1000;
+    else
+        idleInterval = -1;
 
     // Nested mode requires running from Wayland and a socket name
     // and fake screen data cannot be used
     if (nested) {
-        if (!QGuiApplication::platformName().startsWith(QStringLiteral("wayland"))) {
+        if (!QGuiApplication::platformName().startsWith(QStringLiteral("greenisland"))) {
             qCritical("Nested mode only make sense when running on Wayland.\n"
-                      "Please pass the \"-platform wayland\" argument.");
+                      "Please pass the \"-platform greenisland\" argument.");
 #if HAVE_SYSTEMD
             if (notify)
-                sd_notifyf(0, "STATUS=Nested mode requested, but no wayland QPA");
+                sd_notifyf(0, "STATUS=Nested mode requested, wrong QPA plugin");
 #endif
             return 1;
         }
@@ -147,17 +155,17 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Home application parameters
+    // Run
+    GreenIsland::Server::HomeApplication homeApp;
     homeApp.setNotificationEnabled(notify);
-    homeApp.setFakeScreenData(fakeScreenData);
-
-    // Idle timer
-    if (idleInterval >= 5)
-        homeApp.setIdleInterval(idleInterval * 1000);
-
-    // Create the compositor and run
-    if (!homeApp.run(nested, parser.value(shellOption)))
-        return 1;
+    homeApp.setScreenConfiguration(fakeScreenData);
+    if (parser.isSet(qmlOption)) {
+        if (!homeApp.loadUrl(QUrl::fromLocalFile(parser.value(qmlOption))))
+            return 1;
+    } else {
+        if (!homeApp.load(parser.value(shellOption)))
+            return 1;
+    }
 
     return app.exec();
 }

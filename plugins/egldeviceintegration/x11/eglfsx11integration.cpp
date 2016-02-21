@@ -1,7 +1,7 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
  *
  * Author(s):
@@ -206,6 +206,11 @@ void EglFSX11Integration::platformDestroy()
 EGLNativeDisplayType EglFSX11Integration::platformDisplay() const
 {
     return DISPLAY;
+}
+
+bool EglFSX11Integration::usesVtHandler()
+{
+    return false;
 }
 
 bool EglFSX11Integration::handlesInput()

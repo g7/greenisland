@@ -1,7 +1,7 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
  *
  * Author(s):
@@ -62,6 +62,7 @@ public:
     void platformDestroy() Q_DECL_OVERRIDE;
     EGLNativeDisplayType platformDisplay() const Q_DECL_OVERRIDE;
 
+    bool usesVtHandler() Q_DECL_OVERRIDE;
     bool handlesInput() Q_DECL_OVERRIDE;
 
     QSize screenSize() const Q_DECL_OVERRIDE;

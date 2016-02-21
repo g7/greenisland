@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -127,8 +127,10 @@ void LibInputHandlerPrivate::initialize()
     udev = new Udev;
     li = libinput_udev_create_context(&liInterface, Q_NULLPTR,
                                       UdevPrivate::get(udev)->udev);
-    if (!li)
+    if (Q_UNLIKELY(!li)) {
         qFatal("Unable to get libinput context");
+        return;
+    }
 
     // Setup log handler
     libinput_log_set_handler(li, logHandler);
@@ -143,8 +145,11 @@ void LibInputHandlerPrivate::initialize()
 
     // Assign current seat, relies on XDG_SEAT being set correctly as
     // this would be the case of a session initiated by pam_systemd
-    if (libinput_udev_assign_seat(li, qgetenv("XDG_SEAT").constData()) != 0)
+    if (Q_UNLIKELY(libinput_udev_assign_seat(li, qgetenv("XDG_SEAT").constData()) != 0)) {
         qFatal("Failed to assign seat to libinput");
+        return;
+    }
+    qCDebug(lcInput, "Assigned seat \"%s\" to udev", qgetenv("XDG_SEAT").constData());
 
     keyboard = new LibInputKeyboard(q);
     pointer = new LibInputPointer(q);
@@ -256,6 +261,9 @@ void LibInputHandlerPrivate::_q_liEventHandler()
         case LIBINPUT_EVENT_POINTER_MOTION:
             pointer->handleMotion(libinput_event_get_pointer_event(event));
             break;
+        case LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE:
+            pointer->handleAbsoluteMotion(libinput_event_get_pointer_event(event));
+            break;
             // Touch
         case LIBINPUT_EVENT_TOUCH_UP:
             touch->handleTouchUp(libinput_event_get_touch_event(event));
@@ -315,16 +323,16 @@ void LibInputHandlerPrivate::logHandler(libinput *handle, libinput_log_priority 
         // library can be dinstinguished from ours
         switch (priority) {
         case LIBINPUT_LOG_PRIORITY_DEBUG:
-            qCDebug(lcInput, "libinput: %s", buffer);
+            qCDebug(lcInput, "%s", buffer);
             break;
         case LIBINPUT_LOG_PRIORITY_ERROR:
-            qCWarning(lcInput, "libinput: %s", buffer);
+            qCWarning(lcInput, "%s", buffer);
             break;
         case LIBINPUT_LOG_PRIORITY_INFO:
 #if QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
-            qCInfo(lcInput, "libinput: %s", buffer);
+            qCInfo(lcInput, "%s", buffer);
 #else
-            qCDebug(lcInput, "libinput: %s", buffer);
+            qCDebug(lcInput, "%s", buffer);
 #endif
             break;
         default:

@@ -1,10 +1,10 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  *
  * Author(s):
- *    Pier Luigi Fiorini
+ *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:LGPL2.1+$
  *
@@ -43,18 +43,17 @@ class GREENISLANDPLATFORM_EXPORT VtHandler : public QObject
     Q_DECLARE_PRIVATE(VtHandler)
 public:
     VtHandler(QObject *parent = 0);
-    ~VtHandler();
 
     bool isActive() const;
 
-    void activate(int nr);
+    void activate(quint32 nr);
     void suspend();
 
 Q_SIGNALS:
     void created();
     void activeChanged(bool active);
     void interrupted();
-    void suspendRequested();
+    void aboutToSuspend();
     void resumed();
 };
 

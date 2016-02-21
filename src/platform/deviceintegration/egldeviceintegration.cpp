@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2015 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
@@ -37,7 +37,6 @@
 #include "deviceintegration/egldeviceintegration.h"
 #include "deviceintegration/eglfscursor.h"
 #include "deviceintegration/eglfsintegration.h"
-#include "deviceintegration/eglfswindow.h"
 
 #if defined(Q_OS_LINUX)
 #include <fcntl.h>
@@ -95,9 +94,10 @@ void EGLDeviceIntegration::platformInit()
 
     framebuffer = qt_safe_open(fbDev, O_RDONLY);
 
-    if (framebuffer == -1) {
+    if (Q_UNLIKELY(framebuffer == -1)) {
         qCWarning(lcDeviceIntegration, "Failed to open %s", fbDev.constData());
         qFatal("Can't continue without a display");
+        return;
     }
 
 #ifdef FBIOBLANK
@@ -114,6 +114,11 @@ void EGLDeviceIntegration::platformDestroy()
 bool EGLDeviceIntegration::handlesInput()
 {
     return false;
+}
+
+bool EGLDeviceIntegration::usesVtHandler()
+{
+    return true;
 }
 
 bool EGLDeviceIntegration::usesDefaultScreen()
@@ -147,12 +152,22 @@ QSize EGLDeviceIntegration::screenSize() const
 
 QDpi EGLDeviceIntegration::logicalDpi() const
 {
-    QSizeF ps = physicalScreenSize();
-    QSize s = screenSize();
+    const QSizeF ps = physicalScreenSize();
+    const QSize s = screenSize();
 
-    return QDpi(25.4 * s.width() / ps.width(),
-                25.4 * s.height() / ps.height());
+    if (!ps.isEmpty() && !s.isEmpty())
+        return QDpi(25.4 * s.width() / ps.width(),
+                    25.4 * s.height() / ps.height());
+    else
+        return QDpi(100, 100);
 }
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+qreal EGLDeviceIntegration::pixelDensity() const
+{
+    return qRound(logicalDpi().first / qreal(100));
+}
+#endif
 
 Qt::ScreenOrientation EGLDeviceIntegration::nativeOrientation() const
 {
@@ -200,9 +215,20 @@ bool EGLDeviceIntegration::filterConfig(EGLDisplay, EGLConfig) const
 
 QPlatformWindow *EGLDeviceIntegration::createPlatformWindow(QWindow *window)
 {
-    EglFSWindow *w = new EglFSWindow(window);
-    w->create();
-    return w;
+    Q_UNUSED(window);
+    return Q_NULLPTR;
+}
+
+QPlatformBackingStore *EGLDeviceIntegration::createPlatformBackingStore(QWindow *window)
+{
+    Q_UNUSED(window);
+    return Q_NULLPTR;
+}
+
+QPlatformOpenGLContext *EGLDeviceIntegration::createPlatformOpenGLContext(QOpenGLContext *context)
+{
+    Q_UNUSED(context);
+    return Q_NULLPTR;
 }
 
 EGLNativeWindowType EGLDeviceIntegration::createNativeWindow(QPlatformWindow *platformWindow,
@@ -261,6 +287,13 @@ bool EGLDeviceIntegration::supportsPBuffers() const
     return true;
 }
 
+void *EGLDeviceIntegration::wlDisplay() const
+{
+    return Q_NULLPTR;
+}
+
 } // namespace Platform
 
 } // namespace GreenIsland
+
+#include "moc_egldeviceintegration.cpp"

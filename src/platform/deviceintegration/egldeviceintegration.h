@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2015 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
@@ -59,7 +59,7 @@ public:
     virtual void platformDestroy();
 
     virtual bool handlesInput();
-
+    virtual bool usesVtHandler();
     virtual bool usesDefaultScreen();
 
     virtual void screenInit();
@@ -68,6 +68,9 @@ public:
     virtual QSizeF physicalScreenSize() const;
     virtual QSize screenSize() const;
     virtual QDpi logicalDpi() const;
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    virtual qreal pixelDensity() const;
+#endif
     virtual Qt::ScreenOrientation nativeOrientation() const;
     virtual Qt::ScreenOrientation orientation() const;
     virtual int screenDepth() const;
@@ -77,6 +80,9 @@ public:
     virtual QSurfaceFormat surfaceFormatFor(const QSurfaceFormat &inputFormat) const;
 
     virtual QPlatformWindow *createPlatformWindow(QWindow *window);
+    virtual QPlatformBackingStore *createPlatformBackingStore(QWindow *window);
+    virtual QPlatformOpenGLContext *createPlatformOpenGLContext(QOpenGLContext *context);
+
     virtual EGLNativeWindowType createNativeWindow(QPlatformWindow *platformWindow,
                                                    const QSize &size,
                                                    const QSurfaceFormat &format);
@@ -93,6 +99,8 @@ public:
     virtual void presentBuffer(QPlatformSurface *surface);
 
     virtual bool supportsPBuffers() const;
+
+    virtual void *wlDisplay() const;
 };
 
 class GREENISLANDPLATFORM_EXPORT EGLDeviceIntegrationPlugin : public QObject

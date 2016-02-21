@@ -1,7 +1,7 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
  *
  * Author(s):
@@ -221,3 +221,5 @@ void EglFSKmsCursor::initCursorAtlas()
 } // namespace Platform
 
 } // namespace GreenIsland
+
+#include "moc_eglfskmscursor.cpp"

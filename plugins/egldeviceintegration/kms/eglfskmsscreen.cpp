@@ -1,7 +1,7 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
- * Copyright (C) 2015 Pier Luigi Fiorini
+ * Copyright (C) 2015-2016 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
  *
  * Author(s):
@@ -46,15 +46,11 @@ public:
     EglFSKmsInterruptHandler(EglFSKmsScreen *screen) : m_screen(screen) {
         m_vt = static_cast<EglFSIntegration *>(QGuiApplicationPrivate::platformIntegration())->vtHandler();
         connect(m_vt, &VtHandler::interrupted, this, &EglFSKmsInterruptHandler::restoreVideoMode);
-        connect(m_vt, &VtHandler::suspendRequested, this, &EglFSKmsInterruptHandler::handleSuspendRequest);
+        connect(m_vt, &VtHandler::aboutToSuspend, this, &EglFSKmsInterruptHandler::restoreVideoMode);
     }
 
 public slots:
     void restoreVideoMode() { m_screen->restoreMode(); }
-    void handleSuspendRequest() {
-        m_screen->restoreMode();
-        m_vt->suspend();
-    }
 
 private:
     VtHandler *m_vt;
@@ -153,15 +149,24 @@ QImage::Format EglFSKmsScreen::format() const
 
 QSizeF EglFSKmsScreen::physicalSize() const
 {
-    return m_output.physical_size;
+    // Some connectors report empty physical size, this happens especially
+    // on virtual machines resulting in NaN DPI breaking font rendering,
+    // icons and other things: calculate a physical size for 100 DPI
+    QSizeF size = m_output.physical_size;
+    if (Q_UNLIKELY(size.isEmpty())) {
+        // pixelsPerMm is 25.4 (mm per inch) divided by 100 (default physical DPI)
+        const qreal pixelsPerMm = 0.254;
+        size = QSizeF(geometry().size().width() * pixelsPerMm, geometry().size().height() * pixelsPerMm);
+    }
+    return size;
 }
 
 QDpi EglFSKmsScreen::logicalDpi() const
 {
-    QSizeF ps = physicalSize();
-    QSize s = geometry().size();
+    const QSizeF ps = physicalSize();
+    const QSize s = geometry().size();
 
-    if (ps.isValid() && s.isValid())
+    if (!ps.isEmpty() && !s.isEmpty())
         return QDpi(25.4 * s.width() / ps.width(),
                     25.4 * s.height() / ps.height());
     else

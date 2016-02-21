@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2012-2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
@@ -24,94 +24,100 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-import QtQuick 2.0
-import GreenIsland 1.0 as GreenIsland
-import "WindowManagement.js" as WindowManagement
+import QtQuick 2.5
+import GreenIsland 1.0
 
-Item {
-    readonly property alias screenView: screenView
-    readonly property alias surfaceModel: surfaceModel
-    property var activeWindow: null
-    readonly property int activeWindowIndex: WindowManagement.getActiveWindowIndex()
-    readonly property var windowList: WindowManagement.windowList
+WaylandCompositor {
+    property QtObject primarySurfacesArea: null
 
-    id: compositorRoot
-
-    ListModel {
-        id: surfaceModel
+    id: compositor
+    onCreateSurface: {
+        var surface = surfaceComponent.createObject(compositor, {});
+        surface.initialize(compositor, client, id, version);
     }
 
-    Connections {
-        target: GreenIsland.Compositor
-        onWindowMapped: {
-            // A window was mapped
-            WindowManagement.windowMapped(window);
-        }
-        onWindowUnmapped: {
-            // A window was unmapped
-            WindowManagement.windowUnmapped(window);
-        }
-        onWindowDestroyed: {
-            // A window was unmapped
-            WindowManagement.windowDestroyed(id);
-        }
-        onSurfaceMapped: {
-            // A surface was mapped
-            WindowManagement.surfaceMapped(surface);
-        }
+    GlobalPointerTracker {
+        id: globalPointerTracker
+        compositor: compositor
     }
 
-    /*
-     * Components
-     */
-
-    // FPS counter
-    Text {
-        anchors {
-            top: parent.top
-            right: parent.right
+    ScreenManager {
+        id: screenManager
+        onScreenAdded: {
+            console.time("output" + d.outputs.length);
+            var view = screenComponent.createObject(
+                        compositor, {
+                            "compositor": compositor,
+                            "nativeScreen": screen
+                        });
+            d.outputs.push(view);
+            windowManager.recalculateVirtualGeometry();
+            console.timeEnd("output" + d.outputs.length - 1);
         }
-        z: 1000
-        text: fpsCounter.fps
-        font.pointSize: 36
-        style: Text.Raised
-        styleColor: "#222"
-        color: "white"
-        visible: false
-
-        GreenIsland.FpsCounter {
-            id: fpsCounter
+        onScreenRemoved: {
+            var index = screenManager.indexOf(screen);
+            console.time("output" + index);
+            if (index < d.outputs.length) {
+                var output = d.outputs[index];
+                d.outputs.splice(index, 1);
+                output.destroy();
+                windowManager.recalculateVirtualGeometry();
+            }
+            console.timeEnd("output" + index);
+        }
+        onPrimaryScreenChanged: {
+            var index = screenManager.indexOf(screen);
+            if (index < d.outputs.length) {
+                compositor.primarySurfacesArea = d.outputs[index].surfacesArea;
+                compositor.defaultOutput = d.outputs[index];
+            }
         }
     }
 
-    // Screen
-    ScreenView {
-        id: screenView
-        anchors.fill: parent
-        z: 998
+    Shortcut {
+        context: Qt.ApplicationShortcut
+        sequence: "Ctrl+Alt+Backspace"
+        onActivated: Qt.quit()
     }
 
-    /*
-     * Methods
-     */
+    WindowManager {
+        id: windowManager
+        compositor: compositor
+        onWindowCreated: {
+            var i, output, view;
+            for (i = 0; i < d.outputs.length; i++) {
+                output = d.outputs[i];
+                view = windowComponent.createObject(output.surfacesArea, {"window": window});
+                view.initialize(window, output);
+            }
+        }
 
-    function moveFront(window) {
-        return WindowManagement.moveFront(window);
-    }
-
-    function enableInput() {
-        var i;
-        for (i = 0; i < compositorRoot.surfaceModel.count; i++) {
-            var window = compositorRoot.surfaceModel.get(i).item;
-            window.child.focus = true;
+        Component.onCompleted: {
+            initialize();
         }
     }
 
-    function disableInput() {
-        var i;
-        for (i = 0; i < compositorRoot.surfaceModel.count; i++) {
-            var window = compositorRoot.surfaceModel.get(i).item;
-            window.child.focus = false;
-        }
+    QtObject {
+        id: d
+
+        property variant outputs: []
+    }
+
+    Component {
+        id: screenComponent
+
+        ScreenView {}
+    }
+
+    Component {
+        id: surfaceComponent
+
+        WaylandSurface {}
+    }
+
+    Component {
+        id: windowComponent
+
+        WaylandWindow {}
     }
 }

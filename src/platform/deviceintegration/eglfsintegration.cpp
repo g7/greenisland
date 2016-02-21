@@ -1,5 +1,5 @@
 /****************************************************************************
- * This file is part of Green Island.
+ * This file is part of Hawaii.
  *
  * Copyright (C) 2015 Pier Luigi Fiorini
  * Copyright (C) 2015 The Qt Company Ltd.
@@ -51,6 +51,7 @@
 #include "deviceintegration/eglfswindow.h"
 #include "logind/vthandler.h"
 #include "libinput/libinputmanager_p.h"
+#include "libinput/libinputhandler.h"
 #include "platformcompositor/openglcompositorbackingstore.h"
 
 static void initResources()
@@ -109,24 +110,55 @@ void EglFSIntegration::initialize()
     egl_device_integration()->platformInit();
 
     m_display = eglGetDisplay(nativeDisplay());
-    if (m_display == EGL_NO_DISPLAY)
+    if (Q_UNLIKELY(m_display == EGL_NO_DISPLAY)) {
         qFatal("Failed to open EGL display");
+        return;
+    }
 
     EGLint major, minor;
-    if (!eglInitialize(m_display, &major, &minor))
+    if (Q_UNLIKELY(!eglInitialize(m_display, &major, &minor))) {
         qFatal("Failed to initialize EGL display");
+        return;
+    }
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QString icStr = QPlatformInputContextFactory::requested();
+    if (icStr.isNull())
+        icStr = QLatin1String("compose");
+    m_inputContext = QPlatformInputContextFactory::create(icStr);
+#else
     m_inputContext = QPlatformInputContextFactory::create();
+#endif
 
-    m_vtHandler.reset(new VtHandler);
+    if (egl_device_integration()->usesVtHandler())
+        m_vtHandler.reset(new VtHandler);
 
     if (!egl_device_integration()->handlesInput())
         m_liHandler = new Platform::LibInputManager(this);
+
+    // Switch vt
+    if (!m_vtHandler.isNull() && m_liHandler) {
+        connect(m_liHandler->handler(), &LibInputHandler::keyReleased, this, [this](const LibInputKeyEvent &e) {
+            if (e.modifiers.testFlag(Qt::ControlModifier) &&
+                    e.modifiers.testFlag(Qt::AltModifier) &&
+                    e.key >= Qt::Key_F1 && e.key <= Qt::Key_F35) {
+                quint32 vt = e.key - Qt::Key_F1 + 1;
+                m_vtHandler->activate(vt);
+            }
+        });
+    }
 
     if (egl_device_integration()->usesDefaultScreen())
         addScreen(new EglFSScreen(display()));
     else
         egl_device_integration()->screenInit();
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    // Set the first screen as primary
+    QScreen *firstScreen = QGuiApplication::screens().at(0);
+    if (firstScreen && firstScreen->handle())
+        setPrimaryScreen(firstScreen->handle());
+#endif
 }
 
 void EglFSIntegration::destroy()
@@ -152,15 +184,25 @@ QPlatformWindow *EglFSIntegration::createPlatformWindow(QWindow *window) const
     QWindowSystemInterface::flushWindowSystemEvents();
 
     QPlatformWindow *w = egl_device_integration()->createPlatformWindow(window);
-    if (w) {
-        if (window->type() != Qt::ToolTip)
-            w->requestActivateWindow();
+    if (!w) {
+        w = new EglFSWindow(window);
+        static_cast<EglFSWindow *>(w)->create();
     }
+
+    // Activate only the compositor window for the primary screen in order to
+    // make keyboard input work
+    if (window->type() != Qt::ToolTip && window->screen() == QGuiApplication::primaryScreen())
+        w->requestActivateWindow();
+
     return w;
 }
 
 QPlatformBackingStore *EglFSIntegration::createPlatformBackingStore(QWindow *window) const
 {
+    QPlatformBackingStore *pbs = egl_device_integration()->createPlatformBackingStore(window);
+    if (pbs)
+        return pbs;
+
     OpenGLCompositorBackingStore *bs = new OpenGLCompositorBackingStore(window);
     if (!window->handle())
         window->create();
@@ -170,6 +212,10 @@ QPlatformBackingStore *EglFSIntegration::createPlatformBackingStore(QWindow *win
 
 QPlatformOpenGLContext *EglFSIntegration::createPlatformOpenGLContext(QOpenGLContext *context) const
 {
+    QPlatformOpenGLContext *pctx = egl_device_integration()->createPlatformOpenGLContext(context);
+    if (pctx)
+        return pctx;
+
     // If there is a "root" window into which raster and QOpenGLWidget content is
     // composited, all other contexts must share with its context.
     QOpenGLContext *compositingContext = OpenGLCompositor::instance()->context();
@@ -224,7 +270,8 @@ enum ResourceType {
     EglContext,
     EglConfig,
     NativeDisplay,
-    XlibDisplay
+    XlibDisplay,
+    WaylandDisplay
 };
 
 static int resourceType(const QByteArray &key)
@@ -235,7 +282,8 @@ static int resourceType(const QByteArray &key)
                                         QByteArrayLiteral("eglcontext"),
                                         QByteArrayLiteral("eglconfig"),
                                         QByteArrayLiteral("nativedisplay"),
-                                        QByteArrayLiteral("display")
+                                        QByteArrayLiteral("display"),
+                                        QByteArrayLiteral("server_wl_display")
                                       };
     const QByteArray *end = names + sizeof(names) / sizeof(names[0]);
     const QByteArray *result = std::find(names, end, key);
@@ -254,6 +302,9 @@ void *EglFSIntegration::nativeResourceForIntegration(const QByteArray &resource)
         break;
     case NativeDisplay:
         result = reinterpret_cast<void*>(nativeDisplay());
+        break;
+    case WaylandDisplay:
+        result = egl_device_integration()->wlDisplay();
         break;
     default:
         break;

@@ -38,7 +38,6 @@ Qt >= 5.5 with at least the following modules is required:
 
 * [qtbase](http://code.qt.io/cgit/qt/qtbase.git)
 * [qtdeclarative](http://code.qt.io/cgit/qt/qtdeclarative.git)
-* [qtwayland](http://code.qt.io/cgit/qt/qtwayland.git)
 
 The following modules and their dependencies are required:
 
@@ -68,11 +67,6 @@ If you enable Vivante device integration you also need:
 If you enable XWayland support you also need:
 
 * [xcb-util-cursor](http://cgit.freedesktop.org/xcb/util-cursor)
-
-### qtwayland
-
-Make sure qtwayland is built with the QtCompositor API, please read
-upstream [documentation](http://code.qt.io/cgit/qt/qtwayland.git/tree/README?h=5.5).
 
 ## Build
 
@@ -206,11 +200,23 @@ to learn how to enable them.
 
 ### Available categories
 
-* Compositor:
-  * **greenisland.compositor:** Compositor
+* Server-side:
+  * **greenisland.compositor:** Core compositor classes
   * **greenisland.screenbackend.native:** Native screen backend
   * **greenisland.screenbackend.fake:** Fake screen backend
-  * **greenisland.screenconfiguration:** Screen configuration loader
+  * **greenisland.protocols.gtkshell:** gtk_shell
+  * **greenisland.protocols.gtkshell.trace:** gtk_shell trace
+  * **greenisland.protocols.recorder:** greenisland_recorder
+  * **greenisland.protocols.screenshooter:** greenisland_screenshooter
+  * **greenisland.protocols.taskmanager:** greenisland_windows
+  * **greenisland.protocols.xdgshell:** xdg_shell
+  * **greenisland.protocols.xdgshell.trace:** xdg_shell trace
+
+* Client-side:
+  * **greenisland.client.registry:** Registry
+  * **greenisland.client.shmpool:** Shared memory pool
+  * **greenisland.client.cursortheme:** Cursor theme
+  * **greenisland.client.fullscreenshell:** Full screen shell
 
 * Platform:
   * **greenisland.qpa.deviceintegration:** Device integration
@@ -218,21 +224,8 @@ to learn how to enable them.
   * **greenisland.qpa.logind:** Logind integration
   * **greenisland.qpa.udev:** udev integration
 
-* Client-side:
-  * **greenisland.wlregistry:** Registry
-  * **greenisland.wlshmpool:** Shared memory pool
-
-* Protocols:
-  * **greenisland.protocols.xdgshell:** xdg_shell
-  * **greenisland.protocols.xdgshell.trace:** xdg_shell trace
-  * **greenisland.protocols.wlshell:** wl_shell
-  * **greenisland.protocols.wlshell.trace:** wl_shell trace
-  * **greenisland.protocols.wlsubcompositor.trace:** wl_subcompositor and wl_subsurface trace
-  * **greenisland.protocols.gtkshell:** gtk_shell
-  * **greenisland.protocols.gtkshell.trace:** gtk_shell trace
-  * **greenisland.protocols.greenisland.recorder:** greenisland_recorder
-  * **greenisland.protocols.greenisland.screenshooter:** greenisland_screenshooter
-  * **greenisland.protocols.fullscreenshell.client:** wl_fullscreen_shell client side
+* EGL Device Integrations:
+  * **greenisland.qpa.wayland:** Wayland EGL device integration
 
 * Plugins:
   * **greenisland.plugins.plasma.shell:** org_kde_plasma_shell protocol
