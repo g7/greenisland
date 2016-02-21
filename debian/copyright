@@ -274,8 +274,7 @@ License: GPL-2+
 
 Files: tests/auto/*
 Copyright: 2012-2016, Pier Luigi Fiorini
-License: UNKNOWN
- Please fill license UNKNOWN from header of tests/auto/*
+License: LGPL-2.1
 
 Files: tools/waylandscanner/*
 Copyright: 2016, The Qt Company Ltd
