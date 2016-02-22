@@ -1,3 +1,9 @@
+greenisland (0.7.90+git20160221+repack-1~hawaii1) unstable; urgency=medium
+
+  * [packaging] Architecture-independent library symbols
+
+ -- Eugenio Paolantonio (g7) <me@medesimo.eu>  Mon, 22 Feb 2016 17:34:06 +0100
+
 greenisland (0.7.90+git20160221+repack-1~hawaii0) unstable; urgency=medium
 
   * Initial release.
