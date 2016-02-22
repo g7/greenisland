@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 0.7.90 amd64
 libGreenIslandClient.so.0 libgreenisland-client0 #MINVER#
  _ZN11GreenIsland6Client10Compositor11qt_metacallEN11QMetaObject4CallEiPPv@Base 0.7.90
  _ZN11GreenIsland6Client10Compositor11qt_metacastEPKc@Base 0.7.90
@@ -574,61 +575,53 @@ libGreenIslandClient.so.0 libgreenisland-client0 #MINVER#
  _ZTVN11GreenIsland6Client7SurfaceE@Base 0.7.90
  _ZTVN11GreenIsland6Client8KeyboardE@Base 0.7.90
  _ZTVN11GreenIsland6Client8RegistryE@Base 0.7.90
- _ZThn112_N11GreenIsland6Client10ShmPrivate10shm_formatEj@Base 0.7.90
- _ZThn112_N11GreenIsland6Client11SeatPrivate17seat_capabilitiesEj@Base 0.7.90
- _ZThn112_N11GreenIsland6Client11SeatPrivate9seat_nameERK7QString@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivate10touch_downEjjP10wl_surfaceiii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivate11touch_frameEv@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivate12touch_cancelEv@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivate12touch_motionEjiii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivate8touch_upEjji@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client12TouchPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client13OutputPrivate11output_doneEv@Base 0.7.90
- _ZThn112_N11GreenIsland6Client13OutputPrivate11output_modeEjiii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client13OutputPrivate12output_scaleEi@Base 0.7.90
- _ZThn112_N11GreenIsland6Client13OutputPrivate15output_geometryEiiiiiRK7QStringS4_i@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivate12pointer_axisEjji@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivate13pointer_enterEjP10wl_surfaceii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivate13pointer_leaveEjP10wl_surface@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivate14pointer_buttonEjjjj@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivate14pointer_motionEjii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14PointerPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14ShmPoolPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14ShmPoolPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14SurfacePrivate13surface_enterEP9wl_output@Base 0.7.90
- _ZThn112_N11GreenIsland6Client14SurfacePrivate13surface_leaveEP9wl_output@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivate12keyboard_keyEjjjj@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivate14keyboard_enterEjP10wl_surfaceP8wl_array@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivate14keyboard_leaveEjP10wl_surface@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivate15keyboard_keymapEjij@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivate18keyboard_modifiersEjjjjj@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivate20keyboard_repeat_infoEii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client15KeyboardPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreencastPrivate16screencast_frameEP9wl_bufferji@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreencastPrivate16screencast_setupEiiii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreencastPrivate17screencast_failedEiP9wl_buffer@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreencastPrivate20screencast_cancelledEP9wl_buffer@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreencastPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreencastPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreenshotPrivate15screenshot_doneEv@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreenshotPrivate16screenshot_setupEiiii@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreenshotPrivate17screenshot_failedEi@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreenshotPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client17ScreenshotPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client19ScreencasterPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client19ScreencasterPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client20ScreenshooterPrivateD0Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client20ScreenshooterPrivateD1Ev@Base 0.7.90
- _ZThn112_N11GreenIsland6Client22FullScreenShellPrivate27fullscreen_shell_capabilityEj@Base 0.7.90
  _wl_fullscreen_shell_interface@Base 0.7.90
  _wl_fullscreen_shell_mode_feedback_interface@Base 0.7.90
  greenisland_screencast_interface@Base 0.7.90
  greenisland_screencaster_interface@Base 0.7.90
  greenisland_screenshooter_interface@Base 0.7.90
  greenisland_screenshot_interface@Base 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::FullScreenShellPrivate::fullscreen_shell_capability(unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::keyboard_enter(unsigned int, wl_surface*, wl_array*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::keyboard_key(unsigned int, unsigned int, unsigned int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::keyboard_keymap(unsigned int, int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::keyboard_leave(unsigned int, wl_surface*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::keyboard_modifiers(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::keyboard_repeat_info(int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::KeyboardPrivate::~KeyboardPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::OutputPrivate::output_done()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::OutputPrivate::output_geometry(int, int, int, int, int, QString const&, QString const&, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::OutputPrivate::output_mode(unsigned int, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::OutputPrivate::output_scale(int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::PointerPrivate::pointer_axis(unsigned int, unsigned int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::PointerPrivate::pointer_button(unsigned int, unsigned int, unsigned int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::PointerPrivate::pointer_enter(unsigned int, wl_surface*, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::PointerPrivate::pointer_leave(unsigned int, wl_surface*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::PointerPrivate::pointer_motion(unsigned int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::PointerPrivate::~PointerPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreencastPrivate::screencast_cancelled(wl_buffer*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreencastPrivate::screencast_failed(int, wl_buffer*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreencastPrivate::screencast_frame(wl_buffer*, unsigned int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreencastPrivate::screencast_setup(int, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreencastPrivate::~ScreencastPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreencasterPrivate::~ScreencasterPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreenshooterPrivate::~ScreenshooterPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreenshotPrivate::screenshot_done()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreenshotPrivate::screenshot_failed(int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreenshotPrivate::screenshot_setup(int, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ScreenshotPrivate::~ScreenshotPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::SeatPrivate::seat_capabilities(unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::SeatPrivate::seat_name(QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ShmPoolPrivate::~ShmPoolPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::ShmPrivate::shm_format(unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::SurfacePrivate::surface_enter(wl_output*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::SurfacePrivate::surface_leave(wl_output*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::TouchPrivate::touch_cancel()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::TouchPrivate::touch_down(unsigned int, unsigned int, wl_surface*, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::TouchPrivate::touch_frame()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::TouchPrivate::touch_motion(unsigned int, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::TouchPrivate::touch_up(unsigned int, unsigned int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Client::TouchPrivate::~TouchPrivate()@Base" 0.7.90
  wl_buffer_interface@Base 0.7.90
  wl_callback_interface@Base 0.7.90
  wl_compositor_interface@Base 0.7.90

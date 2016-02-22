@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 0.7.90 amd64
 libGreenIslandPlatform.so.0 libgreenisland-platform0 #MINVER#
  _ZN11GreenIsland8Platform10EGLPbufferC1EPvRK14QSurfaceFormatP17QOffscreenSurface6QFlagsINS0_18EGLPlatformContext4FlagEE@Base 0.7.90
  _ZN11GreenIsland8Platform10EGLPbufferC2EPvRK14QSurfaceFormatP17QOffscreenSurface6QFlagsINS0_18EGLPlatformContext4FlagEE@Base 0.7.90
@@ -459,14 +460,13 @@ libGreenIslandPlatform.so.0 libgreenisland-platform0 #MINVER#
  _ZTVN11GreenIsland8Platform28OpenGLCompositorBackingStoreE@Base 0.7.90
  _ZTVN11GreenIsland8Platform6LogindE@Base 0.7.90
  _ZTVN11GreenIsland8Platform9VtHandlerE@Base 0.7.90
- _ZThn24_N11GreenIsland8Platform11EglFSWindow14endCompositingEv@Base 0.7.90
- _ZThn24_N11GreenIsland8Platform11EglFSWindowD0Ev@Base 0.7.90
- _ZThn24_N11GreenIsland8Platform11EglFSWindowD1Ev@Base 0.7.90
- _ZThn24_NK11GreenIsland8Platform11EglFSWindow12sourceWindowEv@Base 0.7.90
- _ZThn24_NK11GreenIsland8Platform11EglFSWindow8texturesEv@Base 0.7.90
- _ZThn8_N11GreenIsland8Platform16EglFSIntegration23nativeResourceForScreenERK10QByteArrayP7QScreen@Base 0.7.90
- _ZThn8_N11GreenIsland8Platform16EglFSIntegration23nativeResourceForWindowERK10QByteArrayP7QWindow@Base 0.7.90
- _ZThn8_N11GreenIsland8Platform16EglFSIntegration24nativeResourceForContextERK10QByteArrayP14QOpenGLContext@Base 0.7.90
- _ZThn8_N11GreenIsland8Platform16EglFSIntegration28nativeResourceForIntegrationERK10QByteArray@Base 0.7.90
- _ZThn8_N11GreenIsland8Platform16EglFSIntegration32nativeResourceFunctionForContextERK10QByteArray@Base 0.7.90
- _ZThn8_NK11GreenIsland8Platform16EglFSIntegration16platformFunctionERK10QByteArray@Base 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSIntegration::nativeResourceForContext(QByteArray const&, QOpenGLContext*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSIntegration::nativeResourceForIntegration(QByteArray const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSIntegration::nativeResourceForScreen(QByteArray const&, QScreen*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSIntegration::nativeResourceForWindow(QByteArray const&, QWindow*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSIntegration::nativeResourceFunctionForContext(QByteArray const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSIntegration::platformFunction(QByteArray const&) const@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSWindow::endCompositing()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSWindow::sourceWindow() const@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSWindow::textures() const@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Platform::EglFSWindow::~EglFSWindow()@Base" 0.7.90

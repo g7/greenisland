@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 0.7.90 amd64
 libGreenIslandServer.so.0 libgreenisland-server0 #MINVER#
  _ZN11GreenIsland6Server10GtkSurface10initializeEPNS0_8GtkShellEP15QWaylandSurfaceP14QWaylandClientj@Base 0.7.90
  _ZN11GreenIsland6Server10GtkSurface10initializeEv@Base 0.7.90
@@ -687,18 +688,18 @@ libGreenIslandServer.so.0 libgreenisland-server0 #MINVER#
  _ZNK11GreenIsland6Server8XdgPopup13parentSurfaceEv@Base 0.7.90
  _ZNK11GreenIsland6Server8XdgPopup7surfaceEv@Base 0.7.90
  _ZNK11GreenIsland6Server8XdgShell10metaObjectEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10GtkSurfaceEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10ScreencastEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10ScreenshotEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10XdgSurfaceEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server11TaskManagerEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server12ScreencasterEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server13ScreenshooterEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server18ApplicationManagerEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8GtkShellEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8TaskItemEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8XdgPopupEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8XdgShellEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10GtkSurfaceEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10ScreencastEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10ScreenshotEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server10XdgSurfaceEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server11TaskManagerEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server12ScreencasterEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server13ScreenshooterEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server18ApplicationManagerEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8GtkShellEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8TaskItemEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8XdgPopupEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN11GreenIsland6Server8XdgShellEE18extensionInterfaceEv@Base 0.7.90
  _ZTI24QWaylandExtensionPrivate@Base 0.7.90
  _ZTI25QWaylandExtensionTemplateIN11GreenIsland6Server10GtkSurfaceEE@Base 0.7.90
  _ZTI25QWaylandExtensionTemplateIN11GreenIsland6Server10ScreencastEE@Base 0.7.90
@@ -903,62 +904,6 @@ libGreenIslandServer.so.0 libgreenisland-server0 #MINVER#
  _ZTVN11GreenIsland6Server8TaskItemE@Base 0.7.90
  _ZTVN11GreenIsland6Server8XdgPopupE@Base 0.7.90
  _ZTVN11GreenIsland6Server8XdgShellE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15GtkShellPrivate19shell_bind_resourceEPN15QtWaylandServer9gtk_shell8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15GtkShellPrivate21shell_get_gtk_surfaceEPN15QtWaylandServer9gtk_shell8ResourceEjP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15GtkShellPrivate22shell_destroy_resourceEPN15QtWaylandServer9gtk_shell8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgPopupPrivate13popup_destroyEPN15QtWaylandServer9xdg_popup8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgPopupPrivate22popup_destroy_resourceEPN15QtWaylandServer9xdg_popup8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgPopupPrivateD0Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgPopupPrivateD1Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgShellPrivate10shell_pongEPN15QtWaylandServer9xdg_shell8ResourceEj@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgShellPrivate13shell_destroyEPN15QtWaylandServer9xdg_shell8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgShellPrivate19shell_get_xdg_popupEPN15QtWaylandServer9xdg_shell8ResourceEjP11wl_resourceS7_S7_jii@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgShellPrivate21shell_get_xdg_surfaceEPN15QtWaylandServer9xdg_shell8ResourceEjP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server15XdgShellPrivate26shell_use_unstable_versionEPN15QtWaylandServer9xdg_shell8ResourceEi@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17GtkSurfacePrivate17surface_set_modalEPN15QtWaylandServer11gtk_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17GtkSurfacePrivate19surface_unset_modalEPN15QtWaylandServer11gtk_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17GtkSurfacePrivate24surface_destroy_resourceEPN15QtWaylandServer11gtk_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17GtkSurfacePrivate27surface_set_dbus_propertiesEPN15QtWaylandServer11gtk_surface8ResourceERK7QStringS8_S8_S8_S8_S8_@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17GtkSurfacePrivateD0Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17GtkSurfacePrivateD1Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17ScreencastPrivate17screencast_recordEPN15QtWaylandServer22greenisland_screencast8ResourceEP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17ScreencastPrivate18screencast_destroyEPN15QtWaylandServer22greenisland_screencast8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17ScreenshotPrivate17screenshot_recordEPN15QtWaylandServer22greenisland_screenshot8ResourceEP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17ScreenshotPrivate18screenshot_destroyEPN15QtWaylandServer22greenisland_screenshot8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate12surface_moveEPN15QtWaylandServer11xdg_surface8ResourceEP11wl_resourcej@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate14surface_resizeEPN15QtWaylandServer11xdg_surface8ResourceEP11wl_resourcejj@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate15surface_destroyEPN15QtWaylandServer11xdg_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate17surface_set_titleEPN15QtWaylandServer11xdg_surface8ResourceERK7QString@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate18surface_set_app_idEPN15QtWaylandServer11xdg_surface8ResourceERK7QString@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate18surface_set_parentEPN15QtWaylandServer11xdg_surface8ResourceEP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate21surface_ack_configureEPN15QtWaylandServer11xdg_surface8ResourceEj@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate21surface_set_maximizedEPN15QtWaylandServer11xdg_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate21surface_set_minimizedEPN15QtWaylandServer11xdg_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate22surface_set_fullscreenEPN15QtWaylandServer11xdg_surface8ResourceEP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate23surface_unset_maximizedEPN15QtWaylandServer11xdg_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate24surface_destroy_resourceEPN15QtWaylandServer11xdg_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate24surface_show_window_menuEPN15QtWaylandServer11xdg_surface8ResourceEP11wl_resourcejii@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate24surface_unset_fullscreenEPN15QtWaylandServer11xdg_surface8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivate27surface_set_window_geometryEPN15QtWaylandServer11xdg_surface8ResourceEiiii@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivateD0Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server17XdgSurfacePrivateD1Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server18TaskManagerPrivate21windows_bind_resourceEPN15QtWaylandServer19greenisland_windows8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server18TaskManagerPrivateD0Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server18TaskManagerPrivateD1Ev@Base 0.7.90
- _ZThn128_N11GreenIsland6Server19ScreencasterPrivate20screencaster_captureEPN15QtWaylandServer24greenisland_screencaster8ResourceEjP11wl_resource@Base 0.7.90
- _ZThn128_N11GreenIsland6Server19ScreencasterPrivate26screencaster_bind_resourceEPN15QtWaylandServer24greenisland_screencaster8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server19ScreencasterPrivate29screencaster_destroy_resourceEPN15QtWaylandServer24greenisland_screencaster8ResourceE@Base 0.7.90
- _ZThn128_N11GreenIsland6Server20ScreenshooterPrivate26screenshooter_capture_areaEPN15QtWaylandServer25greenisland_screenshooter8ResourceEjP8wl_array@Base 0.7.90
- _ZThn128_N11GreenIsland6Server20ScreenshooterPrivate28screenshooter_capture_activeEPN15QtWaylandServer25greenisland_screenshooter8ResourceEjP8wl_array@Base 0.7.90
- _ZThn128_N11GreenIsland6Server20ScreenshooterPrivate28screenshooter_capture_outputEPN15QtWaylandServer25greenisland_screenshooter8ResourceEjP11wl_resourceP8wl_array@Base 0.7.90
- _ZThn128_N11GreenIsland6Server20ScreenshooterPrivate29screenshooter_capture_surfaceEPN15QtWaylandServer25greenisland_screenshooter8ResourceEjP8wl_array@Base 0.7.90
- _ZThn128_N11GreenIsland6Server25ApplicationManagerPrivate17applications_quitEPN15QtWaylandServer24greenisland_applications8ResourceERK7QString@Base 0.7.90
- _ZThn16_N11GreenIsland6Server17QuickXdgPopupItem17componentCompleteEv@Base 0.7.90
- _ZThn16_N11GreenIsland6Server18CompositorSettings10classBeginEv@Base 0.7.90
- _ZThn16_N11GreenIsland6Server18CompositorSettings17componentCompleteEv@Base 0.7.90
- _ZThn16_N11GreenIsland6Server18QuickScreenManager10classBeginEv@Base 0.7.90
- _ZThn16_N11GreenIsland6Server18QuickScreenManager17componentCompleteEv@Base 0.7.90
- _ZThn16_N11GreenIsland6Server19QuickXdgSurfaceItem17componentCompleteEv@Base 0.7.90
  greenisland_applications_interface@Base 0.7.90
  greenisland_screencast_interface@Base 0.7.90
  greenisland_screencaster_interface@Base 0.7.90
@@ -968,6 +913,58 @@ libGreenIslandServer.so.0 libgreenisland-server0 #MINVER#
  greenisland_windows_interface@Base 0.7.90
  gtk_shell_interface@Base 0.7.90
  gtk_surface_interface@Base 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ApplicationManagerPrivate::applications_quit(QtWaylandServer::greenisland_applications::Resource*, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::CompositorSettings::classBegin()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::CompositorSettings::componentComplete()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkShellPrivate::shell_bind_resource(QtWaylandServer::gtk_shell::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkShellPrivate::shell_destroy_resource(QtWaylandServer::gtk_shell::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkShellPrivate::shell_get_gtk_surface(QtWaylandServer::gtk_shell::Resource*, unsigned int, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkSurfacePrivate::surface_destroy_resource(QtWaylandServer::gtk_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkSurfacePrivate::surface_set_dbus_properties(QtWaylandServer::gtk_surface::Resource*, QString const&, QString const&, QString const&, QString const&, QString const&, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkSurfacePrivate::surface_set_modal(QtWaylandServer::gtk_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkSurfacePrivate::surface_unset_modal(QtWaylandServer::gtk_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::GtkSurfacePrivate::~GtkSurfacePrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::QuickScreenManager::classBegin()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::QuickScreenManager::componentComplete()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::QuickXdgPopupItem::componentComplete()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::QuickXdgSurfaceItem::componentComplete()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreencastPrivate::screencast_destroy(QtWaylandServer::greenisland_screencast::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreencastPrivate::screencast_record(QtWaylandServer::greenisland_screencast::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreencasterPrivate::screencaster_bind_resource(QtWaylandServer::greenisland_screencaster::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreencasterPrivate::screencaster_capture(QtWaylandServer::greenisland_screencaster::Resource*, unsigned int, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreencasterPrivate::screencaster_destroy_resource(QtWaylandServer::greenisland_screencaster::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreenshooterPrivate::screenshooter_capture_active(QtWaylandServer::greenisland_screenshooter::Resource*, unsigned int, wl_array*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreenshooterPrivate::screenshooter_capture_area(QtWaylandServer::greenisland_screenshooter::Resource*, unsigned int, wl_array*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreenshooterPrivate::screenshooter_capture_output(QtWaylandServer::greenisland_screenshooter::Resource*, unsigned int, wl_resource*, wl_array*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreenshooterPrivate::screenshooter_capture_surface(QtWaylandServer::greenisland_screenshooter::Resource*, unsigned int, wl_array*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreenshotPrivate::screenshot_destroy(QtWaylandServer::greenisland_screenshot::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::ScreenshotPrivate::screenshot_record(QtWaylandServer::greenisland_screenshot::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::TaskManagerPrivate::windows_bind_resource(QtWaylandServer::greenisland_windows::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::TaskManagerPrivate::~TaskManagerPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgPopupPrivate::popup_destroy(QtWaylandServer::xdg_popup::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgPopupPrivate::popup_destroy_resource(QtWaylandServer::xdg_popup::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgPopupPrivate::~XdgPopupPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgShellPrivate::shell_destroy(QtWaylandServer::xdg_shell::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgShellPrivate::shell_get_xdg_popup(QtWaylandServer::xdg_shell::Resource*, unsigned int, wl_resource*, wl_resource*, wl_resource*, unsigned int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgShellPrivate::shell_get_xdg_surface(QtWaylandServer::xdg_shell::Resource*, unsigned int, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgShellPrivate::shell_pong(QtWaylandServer::xdg_shell::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgShellPrivate::shell_use_unstable_version(QtWaylandServer::xdg_shell::Resource*, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_ack_configure(QtWaylandServer::xdg_surface::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_destroy(QtWaylandServer::xdg_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_destroy_resource(QtWaylandServer::xdg_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_move(QtWaylandServer::xdg_surface::Resource*, wl_resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_resize(QtWaylandServer::xdg_surface::Resource*, wl_resource*, unsigned int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_app_id(QtWaylandServer::xdg_surface::Resource*, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_fullscreen(QtWaylandServer::xdg_surface::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_maximized(QtWaylandServer::xdg_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_minimized(QtWaylandServer::xdg_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_parent(QtWaylandServer::xdg_surface::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_title(QtWaylandServer::xdg_surface::Resource*, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_set_window_geometry(QtWaylandServer::xdg_surface::Resource*, int, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_show_window_menu(QtWaylandServer::xdg_surface::Resource*, wl_resource*, unsigned int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_unset_fullscreen(QtWaylandServer::xdg_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::surface_unset_maximized(QtWaylandServer::xdg_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to GreenIsland::Server::XdgSurfacePrivate::~XdgSurfacePrivate()@Base" 0.7.90
  wl_buffer_interface@Base 0.7.90
  wl_callback_interface@Base 0.7.90
  wl_compositor_interface@Base 0.7.90

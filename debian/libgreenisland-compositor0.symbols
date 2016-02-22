@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 0.7.90 amd64
 libGreenIslandCompositor.so.0 libgreenisland-compositor0 #MINVER#
  _ZN12QWaylandDrag10cancelDragEv@Base 0.7.90
  _ZN12QWaylandDrag11dragStartedEv@Base 0.7.90
@@ -793,12 +794,12 @@ libGreenIslandCompositor.so.0 libgreenisland-compositor0 #MINVER#
  _ZNK20QWaylandShellSurface9classNameEv@Base 0.7.90
  _ZNK23QWaylandDestroyListener10metaObjectEv@Base 0.7.90
  _ZNK23QWaylandQuickCompositor10metaObjectEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateI13QWaylandShellE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateI18QWaylandInputPanelE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateI20QWaylandShellSurfaceE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateI30QWaylandWindowManagerExtensionE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN9QtWayland15ExtendedSurfaceEE18extensionInterfaceEv@Base 0.7.90
- _ZNK25QWaylandExtensionTemplateIN9QtWayland22SurfaceExtensionGlobalEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateI13QWaylandShellE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateI18QWaylandInputPanelE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateI20QWaylandShellSurfaceE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateI30QWaylandWindowManagerExtensionE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN9QtWayland15ExtendedSurfaceEE18extensionInterfaceEv@Base 0.7.90
+ (optional=templinst)_ZNK25QWaylandExtensionTemplateIN9QtWayland22SurfaceExtensionGlobalEE18extensionInterfaceEv@Base 0.7.90
  _ZNK25QWaylandInputPanelPrivate15cursorRectangleEv@Base 0.7.90
  _ZNK25QWaylandInputPanelPrivate17inputPanelVisibleEv@Base 0.7.90
  _ZNK25QWaylandInputPanelPrivate17waylandInputPanelEv@Base 0.7.90
@@ -970,78 +971,67 @@ libGreenIslandCompositor.so.0 libgreenisland-compositor0 #MINVER#
  _ZTVN9QtWayland29ClientBufferIntegrationPluginE@Base 0.7.90
  _ZTVN9QtWayland29ServerBufferIntegrationPluginE@Base 0.7.90
  _ZTVN9QtWayland6RegionE@Base 0.7.90
- _ZThn112_N20QWaylandTouchPrivate13touch_releaseEPN15QtWaylandServer8wl_touch8ResourceE@Base 0.7.90
- _ZThn112_N20QWaylandTouchPrivate22touch_destroy_resourceEPN15QtWaylandServer8wl_touch8ResourceE@Base 0.7.90
- _ZThn112_N21QWaylandOutputPrivate20output_bind_resourceEPN15QtWaylandServer9wl_output8ResourceE@Base 0.7.90
- _ZThn112_N21QWaylandOutputPrivateD0Ev@Base 0.7.90
- _ZThn112_N21QWaylandOutputPrivateD1Ev@Base 0.7.90
- _ZThn112_N22QWaylandPointerPrivate15pointer_releaseEPN15QtWaylandServer10wl_pointer8ResourceE@Base 0.7.90
- _ZThn112_N22QWaylandPointerPrivate18pointer_set_cursorEPN15QtWaylandServer10wl_pointer8ResourceEjP11wl_resourceii@Base 0.7.90
- _ZThn112_N22QWaylandPointerPrivate24pointer_destroy_resourceEPN15QtWaylandServer10wl_pointer8ResourceE@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate13surface_frameEPN15QtWaylandServer10wl_surface8ResourceEj@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate14surface_attachEPN15QtWaylandServer10wl_surface8ResourceEP11wl_resourceii@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate14surface_commitEPN15QtWaylandServer10wl_surface8ResourceE@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate14surface_damageEPN15QtWaylandServer10wl_surface8ResourceEiiii@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate15surface_destroyEPN15QtWaylandServer10wl_surface8ResourceE@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate24surface_destroy_resourceEPN15QtWaylandServer10wl_surface8ResourceE@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate24surface_set_input_regionEPN15QtWaylandServer10wl_surface8ResourceEP11wl_resource@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate25surface_set_opaque_regionEPN15QtWaylandServer10wl_surface8ResourceEP11wl_resource@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivate28surface_set_buffer_transformEPN15QtWaylandServer10wl_surface8ResourceEi@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivateD0Ev@Base 0.7.90
- _ZThn112_N22QWaylandSurfacePrivateD1Ev@Base 0.7.90
- _ZThn112_N23QWaylandKeyboardPrivate16keyboard_releaseEPN15QtWaylandServer11wl_keyboard8ResourceE@Base 0.7.90
- _ZThn112_N23QWaylandKeyboardPrivate22keyboard_bind_resourceEPN15QtWaylandServer11wl_keyboard8ResourceE@Base 0.7.90
- _ZThn112_N23QWaylandKeyboardPrivate25keyboard_destroy_resourceEPN15QtWaylandServer11wl_keyboard8ResourceE@Base 0.7.90
- _ZThn112_N23QWaylandKeyboardPrivateD0Ev@Base 0.7.90
- _ZThn112_N23QWaylandKeyboardPrivateD1Ev@Base 0.7.90
- _ZThn112_N25QWaylandCompositorPrivate24compositor_create_regionEPN15QtWaylandServer13wl_compositor8ResourceEj@Base 0.7.90
- _ZThn112_N25QWaylandCompositorPrivate25compositor_create_surfaceEPN15QtWaylandServer13wl_compositor8ResourceEj@Base 0.7.90
- _ZThn112_N25QWaylandCompositorPrivateD0Ev@Base 0.7.90
- _ZThn112_N25QWaylandCompositorPrivateD1Ev@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivate14seat_get_touchEPN15QtWaylandServer7wl_seat8ResourceEj@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivate16seat_get_pointerEPN15QtWaylandServer7wl_seat8ResourceEj@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivate17seat_get_keyboardEPN15QtWaylandServer7wl_seat8ResourceEj@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivate18seat_bind_resourceEPN15QtWaylandServer7wl_seat8ResourceE@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivate21seat_destroy_resourceEPN15QtWaylandServer7wl_seat8ResourceE@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivateD0Ev@Base 0.7.90
- _ZThn112_N26QWaylandInputDevicePrivateD1Ev@Base 0.7.90
- _ZThn128_N20QWaylandShellPrivate23shell_get_shell_surfaceEPN15QtWaylandServer8wl_shell8ResourceEjP11wl_resource@Base 0.7.90
- _ZThn128_N25QWaylandInputPanelPrivate35input_panel_get_input_panel_surfaceEPN15QtWaylandServer14wl_input_panel8ResourceEjP11wl_resource@Base 0.7.90
- _ZThn128_N25QWaylandInputPanelPrivateD0Ev@Base 0.7.90
- _ZThn128_N25QWaylandInputPanelPrivateD1Ev@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate18shell_surface_moveEPN15QtWaylandServer16wl_shell_surface8ResourceEP11wl_resourcej@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate18shell_surface_pongEPN15QtWaylandServer16wl_shell_surface8ResourceEj@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate20shell_surface_resizeEPN15QtWaylandServer16wl_shell_surface8ResourceEP11wl_resourcejj@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate23shell_surface_set_classEPN15QtWaylandServer16wl_shell_surface8ResourceERK7QString@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate23shell_surface_set_popupEPN15QtWaylandServer16wl_shell_surface8ResourceEP11wl_resourcejS5_iij@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate23shell_surface_set_titleEPN15QtWaylandServer16wl_shell_surface8ResourceERK7QString@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate26shell_surface_set_toplevelEPN15QtWaylandServer16wl_shell_surface8ResourceE@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate27shell_surface_set_maximizedEPN15QtWaylandServer16wl_shell_surface8ResourceEP11wl_resource@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate27shell_surface_set_transientEPN15QtWaylandServer16wl_shell_surface8ResourceEP11wl_resourceiij@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate28shell_surface_set_fullscreenEPN15QtWaylandServer16wl_shell_surface8ResourceEjjP11wl_resource@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivate30shell_surface_destroy_resourceEPN15QtWaylandServer16wl_shell_surface8ResourceE@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivateD0Ev@Base 0.7.90
- _ZThn128_N27QWaylandShellSurfacePrivateD1Ev@Base 0.7.90
- _ZThn128_N37QWaylandWindowManagerExtensionPrivate22windowmanager_open_urlEPN15QtWaylandServer16qt_windowmanager8ResourceEjRK7QString@Base 0.7.90
- _ZThn128_N37QWaylandWindowManagerExtensionPrivate27windowmanager_bind_resourceEPN15QtWaylandServer16qt_windowmanager8ResourceE@Base 0.7.90
- _ZThn128_N37QWaylandWindowManagerExtensionPrivate30windowmanager_destroy_resourceEPN15QtWaylandServer16qt_windowmanager8ResourceE@Base 0.7.90
- _ZThn152_N25QWaylandCompositorPrivate28subcompositor_get_subsurfaceEPN15QtWaylandServer16wl_subcompositor8ResourceEjP11wl_resourceS5_@Base 0.7.90
- _ZThn152_N25QWaylandCompositorPrivateD0Ev@Base 0.7.90
- _ZThn152_N25QWaylandCompositorPrivateD1Ev@Base 0.7.90
- _ZThn16_N17QWaylandQuickItemD0Ev@Base 0.7.90
- _ZThn16_N17QWaylandQuickItemD1Ev@Base 0.7.90
- _ZThn16_N29QWaylandQuickShellSurfaceItem17componentCompleteEv@Base 0.7.90
- _ZThn24_N23QWaylandQuickCompositor10classBeginEv@Base 0.7.90
- _ZThn24_N23QWaylandQuickCompositor17componentCompleteEv@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurface22extended_surface_lowerEPN15QtWaylandServer19qt_extended_surface8ResourceE@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurface22extended_surface_raiseEPN15QtWaylandServer19qt_extended_surface8ResourceE@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurface33extended_surface_destroy_resourceEPN15QtWaylandServer19qt_extended_surface8ResourceE@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurface33extended_surface_set_window_flagsEPN15QtWaylandServer19qt_extended_surface8ResourceEi@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurface40extended_surface_update_generic_propertyEPN15QtWaylandServer19qt_extended_surface8ResourceERK7QStringP8wl_array@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurface45extended_surface_set_content_orientation_maskEPN15QtWaylandServer19qt_extended_surface8ResourceEi@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurfaceD0Ev@Base 0.7.90
- _ZThn24_N9QtWayland15ExtendedSurfaceD1Ev@Base 0.7.90
- _ZThn24_N9QtWayland22SurfaceExtensionGlobal38surface_extension_get_extended_surfaceEPN15QtWaylandServer20qt_surface_extension8ResourceEjP11wl_resource@Base 0.7.90
+ (c++)"non-virtual thunk to QWaylandCompositorPrivate::compositor_create_region(QtWaylandServer::wl_compositor::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandCompositorPrivate::compositor_create_surface(QtWaylandServer::wl_compositor::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandCompositorPrivate::subcompositor_get_subsurface(QtWaylandServer::wl_subcompositor::Resource*, unsigned int, wl_resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandCompositorPrivate::~QWaylandCompositorPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputDevicePrivate::seat_bind_resource(QtWaylandServer::wl_seat::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputDevicePrivate::seat_destroy_resource(QtWaylandServer::wl_seat::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputDevicePrivate::seat_get_keyboard(QtWaylandServer::wl_seat::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputDevicePrivate::seat_get_pointer(QtWaylandServer::wl_seat::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputDevicePrivate::seat_get_touch(QtWaylandServer::wl_seat::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputDevicePrivate::~QWaylandInputDevicePrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputPanelPrivate::input_panel_get_input_panel_surface(QtWaylandServer::wl_input_panel::Resource*, unsigned int, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandInputPanelPrivate::~QWaylandInputPanelPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandKeyboardPrivate::keyboard_bind_resource(QtWaylandServer::wl_keyboard::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandKeyboardPrivate::keyboard_destroy_resource(QtWaylandServer::wl_keyboard::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandKeyboardPrivate::keyboard_release(QtWaylandServer::wl_keyboard::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandKeyboardPrivate::~QWaylandKeyboardPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandOutputPrivate::output_bind_resource(QtWaylandServer::wl_output::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandOutputPrivate::~QWaylandOutputPrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandPointerPrivate::pointer_destroy_resource(QtWaylandServer::wl_pointer::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandPointerPrivate::pointer_release(QtWaylandServer::wl_pointer::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandPointerPrivate::pointer_set_cursor(QtWaylandServer::wl_pointer::Resource*, unsigned int, wl_resource*, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandQuickCompositor::classBegin()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandQuickCompositor::componentComplete()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandQuickItem::~QWaylandQuickItem()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandQuickShellSurfaceItem::componentComplete()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellPrivate::shell_get_shell_surface(QtWaylandServer::wl_shell::Resource*, unsigned int, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_destroy_resource(QtWaylandServer::wl_shell_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_move(QtWaylandServer::wl_shell_surface::Resource*, wl_resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_pong(QtWaylandServer::wl_shell_surface::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_resize(QtWaylandServer::wl_shell_surface::Resource*, wl_resource*, unsigned int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_class(QtWaylandServer::wl_shell_surface::Resource*, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_fullscreen(QtWaylandServer::wl_shell_surface::Resource*, unsigned int, unsigned int, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_maximized(QtWaylandServer::wl_shell_surface::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_popup(QtWaylandServer::wl_shell_surface::Resource*, wl_resource*, unsigned int, wl_resource*, int, int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_title(QtWaylandServer::wl_shell_surface::Resource*, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_toplevel(QtWaylandServer::wl_shell_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::shell_surface_set_transient(QtWaylandServer::wl_shell_surface::Resource*, wl_resource*, int, int, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandShellSurfacePrivate::~QWaylandShellSurfacePrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_attach(QtWaylandServer::wl_surface::Resource*, wl_resource*, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_commit(QtWaylandServer::wl_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_damage(QtWaylandServer::wl_surface::Resource*, int, int, int, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_destroy(QtWaylandServer::wl_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_destroy_resource(QtWaylandServer::wl_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_frame(QtWaylandServer::wl_surface::Resource*, unsigned int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_set_buffer_transform(QtWaylandServer::wl_surface::Resource*, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_set_input_region(QtWaylandServer::wl_surface::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::surface_set_opaque_region(QtWaylandServer::wl_surface::Resource*, wl_resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandSurfacePrivate::~QWaylandSurfacePrivate()@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandTouchPrivate::touch_destroy_resource(QtWaylandServer::wl_touch::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandTouchPrivate::touch_release(QtWaylandServer::wl_touch::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandWindowManagerExtensionPrivate::windowmanager_bind_resource(QtWaylandServer::qt_windowmanager::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandWindowManagerExtensionPrivate::windowmanager_destroy_resource(QtWaylandServer::qt_windowmanager::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QWaylandWindowManagerExtensionPrivate::windowmanager_open_url(QtWaylandServer::qt_windowmanager::Resource*, unsigned int, QString const&)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::extended_surface_destroy_resource(QtWaylandServer::qt_extended_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::extended_surface_lower(QtWaylandServer::qt_extended_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::extended_surface_raise(QtWaylandServer::qt_extended_surface::Resource*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::extended_surface_set_content_orientation_mask(QtWaylandServer::qt_extended_surface::Resource*, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::extended_surface_set_window_flags(QtWaylandServer::qt_extended_surface::Resource*, int)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::extended_surface_update_generic_property(QtWaylandServer::qt_extended_surface::Resource*, QString const&, wl_array*)@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::ExtendedSurface::~ExtendedSurface()@Base" 0.7.90
+ (c++)"non-virtual thunk to QtWayland::SurfaceExtensionGlobal::surface_extension_get_extended_surface(QtWaylandServer::qt_surface_extension::Resource*, unsigned int, wl_resource*)@Base" 0.7.90
  qt_extended_surface_interface@Base 0.7.90
  qt_hardware_integration_interface@Base 0.7.90
  qt_key_extension_interface@Base 0.7.90
