@@ -198,6 +198,7 @@ Depends: ${shlibs:Depends},
          libgreenisland-compositor0 (= ${binary:Version}),
          libgreenisland-platform0 (= ${binary:Version}),
          libgreenisland-server0 (= ${binary:Version}),
+         libgreenisland-client0 (= ${binary:Version}),
          qml-module-greenisland (= ${binary:Version}),
          xwayland
 Suggests: weston (>= 1.6.0)
